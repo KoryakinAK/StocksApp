@@ -24,8 +24,7 @@ class StockListViewController: UIViewController, StockListDisplayLogic {
 
     // MARK: Object lifecycle
 
-    override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?)
-    {
+    override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?) {
         super.init(nibName: nibNameOrNil, bundle: nibBundleOrNil)
         setup()
     }
@@ -51,8 +50,7 @@ class StockListViewController: UIViewController, StockListDisplayLogic {
 
     // MARK: Routing
 
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?)
-    {
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if let scene = segue.identifier {
             let selector = NSSelectorFromString("routeTo\(scene)WithSegue:")
             if let router = router, router.responds(to: selector) {
@@ -86,15 +84,13 @@ class StockListViewController: UIViewController, StockListDisplayLogic {
     }
     // MARK: Do something
 
-    func doSomething()
-    {
+    func doSomething() {
         let request = StockList.Something.Request()
         interactor?.doSomething(request: request)
     }
 
-    func displaySomething(viewModel: StockList.Something.ViewModel)
-    {
-        //nameTextField.text = viewModel.name
+    func displaySomething(viewModel: StockList.Something.ViewModel) {
+        // nameTextField.text = viewModel.name
     }
 }
 
@@ -117,14 +113,14 @@ extension StockListViewController: UITableViewDataSource, UITableViewDelegate {
     }
 
     func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
-//        guard let cell = collection.cellForItem(at: item.indexPath) as? MainDishCell else { return }
-//        if item.indexPath.row > lastAnimatedItem {
-//        cell.transform = CGAffineTransform(translationX: (stockListTableView.bounds.width + 30) / 2, y: 0)
-//        UIView.animate(withDuration: 1.3, delay: 0.0, usingSpringWithDamping: 0.6, initialSpringVelocity: 11, options: .curveEaseInOut, animations: {
-//            cell.transform = .identity
-//        })
-//            lastAnimatedItem = item.indexPath.row
-//        }
+        //        guard let cell = collection.cellForItem(at: item.indexPath) as? MainDishCell else { return }
+        //        if item.indexPath.row > lastAnimatedItem {
+        //        cell.transform = CGAffineTransform(translationX: (stockListTableView.bounds.width + 30) / 2, y: 0)
+        //        UIView.animate(withDuration: 1.3, delay: 0.0, usingSpringWithDamping: 0.6, initialSpringVelocity: 11, options: .curveEaseInOut, animations: {
+        //            cell.transform = .identity
+        //        })
+        //            lastAnimatedItem = item.indexPath.row
+        //        }
 
     }
 }

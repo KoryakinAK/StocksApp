@@ -12,20 +12,17 @@
 
 import UIKit
 
-protocol StockListPresentationLogic
-{
-  func presentSomething(response: StockList.Something.Response)
+protocol StockListPresentationLogic {
+    func presentSomething(response: StockList.Something.Response)
 }
 
-class StockListPresenter: StockListPresentationLogic
-{
-  weak var viewController: StockListDisplayLogic?
-  
-  // MARK: Do something
-  
-  func presentSomething(response: StockList.Something.Response)
-  {
-    let viewModel = StockList.Something.ViewModel()
-    viewController?.displaySomething(viewModel: viewModel)
-  }
+class StockListPresenter: StockListPresentationLogic {
+    weak var viewController: StockListDisplayLogic?
+
+    // MARK: Do something
+
+    func presentSomething(response: StockList.Something.Response) {
+        let viewModel = StockList.Something.ViewModel()
+        viewController?.displaySomething(viewModel: viewModel)
+    }
 }

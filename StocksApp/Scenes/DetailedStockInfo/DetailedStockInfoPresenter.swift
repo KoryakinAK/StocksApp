@@ -12,20 +12,17 @@
 
 import UIKit
 
-protocol DetailedStockInfoPresentationLogic
-{
-  func presentSomething(response: DetailedStockInfo.Something.Response)
+protocol DetailedStockInfoPresentationLogic {
+    func presentSomething(response: DetailedStockInfo.Something.Response)
 }
 
-class DetailedStockInfoPresenter: DetailedStockInfoPresentationLogic
-{
-  weak var viewController: DetailedStockInfoDisplayLogic?
-  
-  // MARK: Do something
-  
-  func presentSomething(response: DetailedStockInfo.Something.Response)
-  {
-    let viewModel = DetailedStockInfo.Something.ViewModel()
-    viewController?.displaySomething(viewModel: viewModel)
-  }
+class DetailedStockInfoPresenter: DetailedStockInfoPresentationLogic {
+    weak var viewController: DetailedStockInfoDisplayLogic?
+
+    // MARK: Do something
+
+    func presentSomething(response: DetailedStockInfo.Something.Response) {
+        let viewModel = DetailedStockInfo.Something.ViewModel()
+        viewController?.displaySomething(viewModel: viewModel)
+    }
 }

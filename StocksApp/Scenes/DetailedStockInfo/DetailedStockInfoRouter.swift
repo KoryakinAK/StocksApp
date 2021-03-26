@@ -12,49 +12,45 @@
 
 import UIKit
 
-@objc protocol DetailedStockInfoRoutingLogic
-{
-  //func routeToSomewhere(segue: UIStoryboardSegue?)
+@objc protocol DetailedStockInfoRoutingLogic {
 }
 
-protocol DetailedStockInfoDataPassing
-{
-  var dataStore: DetailedStockInfoDataStore? { get }
+protocol DetailedStockInfoDataPassing {
+    var dataStore: DetailedStockInfoDataStore? { get }
 }
 
-class DetailedStockInfoRouter: NSObject, DetailedStockInfoRoutingLogic, DetailedStockInfoDataPassing
-{
-  weak var viewController: DetailedStockInfoViewController?
-  var dataStore: DetailedStockInfoDataStore?
-  
-  // MARK: Routing
-  
-  //func routeToSomewhere(segue: UIStoryboardSegue?)
-  //{
-  //  if let segue = segue {
-  //    let destinationVC = segue.destination as! SomewhereViewController
-  //    var destinationDS = destinationVC.router!.dataStore!
-  //    passDataToSomewhere(source: dataStore!, destination: &destinationDS)
-  //  } else {
-  //    let storyboard = UIStoryboard(name: "Main", bundle: nil)
-  //    let destinationVC = storyboard.instantiateViewController(withIdentifier: "SomewhereViewController") as! SomewhereViewController
-  //    var destinationDS = destinationVC.router!.dataStore!
-  //    passDataToSomewhere(source: dataStore!, destination: &destinationDS)
-  //    navigateToSomewhere(source: viewController!, destination: destinationVC)
-  //  }
-  //}
+class DetailedStockInfoRouter: NSObject, DetailedStockInfoRoutingLogic, DetailedStockInfoDataPassing {
+    weak var viewController: DetailedStockInfoViewController?
+    var dataStore: DetailedStockInfoDataStore?
 
-  // MARK: Navigation
-  
-  //func navigateToSomewhere(source: DetailedStockInfoViewController, destination: SomewhereViewController)
-  //{
-  //  source.show(destination, sender: nil)
-  //}
-  
-  // MARK: Passing data
-  
-  //func passDataToSomewhere(source: DetailedStockInfoDataStore, destination: inout SomewhereDataStore)
-  //{
-  //  destination.name = source.name
-  //}
+    // MARK: Routing
+
+    // func routeToSomewhere(segue: UIStoryboardSegue?)
+    // {
+    //  if let segue = segue {
+    //    let destinationVC = segue.destination as! SomewhereViewController
+    //    var destinationDS = destinationVC.router!.dataStore!
+    //    passDataToSomewhere(source: dataStore!, destination: &destinationDS)
+    //  } else {
+    //    let storyboard = UIStoryboard(name: "Main", bundle: nil)
+    //    let destinationVC = storyboard.instantiateViewController(withIdentifier: "SomewhereViewController") as! SomewhereViewController
+    //    var destinationDS = destinationVC.router!.dataStore!
+    //    passDataToSomewhere(source: dataStore!, destination: &destinationDS)
+    //    navigateToSomewhere(source: viewController!, destination: destinationVC)
+    //  }
+    // }
+
+    // MARK: Navigation
+
+    // func navigateToSomewhere(source: DetailedStockInfoViewController, destination: SomewhereViewController)
+    // {
+    //  source.show(destination, sender: nil)
+    // }
+
+    // MARK: Passing data
+
+    // func passDataToSomewhere(source: DetailedStockInfoDataStore, destination: inout SomewhereDataStore)
+    // {
+    //  destination.name = source.name
+    // }
 }

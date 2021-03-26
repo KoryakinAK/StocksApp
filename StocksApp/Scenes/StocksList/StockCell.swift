@@ -37,12 +37,12 @@ class StockCell: UITableViewCell {
         let tickerAndFavIconStackView = UIStackView(arrangedSubviews: [ticker, favIcon])
         tickerAndFavIconStackView.axis = .horizontal
 
-        let allCellObjectsList:[UIView] = [name, currentPrice, priceChange, logo, tickerAndFavIconStackView]
+        let allCellObjectsList: [UIView] = [name, currentPrice, priceChange, logo, tickerAndFavIconStackView]
         allCellObjectsList.forEach {
             $0.translatesAutoresizingMaskIntoConstraints = false
             self.contentView.addSubview($0)
         }
-        
+
         logo.backgroundColor = .yellow
         name.backgroundColor = .red
         ticker.backgroundColor = .brown
@@ -66,7 +66,7 @@ class StockCell: UITableViewCell {
             currentPrice.bottomAnchor.constraint(equalTo: contentView.centerYAnchor),
 
             priceChange.topAnchor.constraint(equalTo: contentView.centerYAnchor),
-            priceChange.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -8),
+            priceChange.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -8)
         ])
     }
 
@@ -74,4 +74,3 @@ class StockCell: UITableViewCell {
         fatalError("init(coder:) has not been implemented")
     }
 }
-

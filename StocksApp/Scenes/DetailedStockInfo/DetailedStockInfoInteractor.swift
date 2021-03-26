@@ -12,30 +12,26 @@
 
 import UIKit
 
-protocol DetailedStockInfoBusinessLogic
-{
-  func doSomething(request: DetailedStockInfo.Something.Request)
+protocol DetailedStockInfoBusinessLogic {
+    func doSomething(request: DetailedStockInfo.Something.Request)
 }
 
-protocol DetailedStockInfoDataStore
-{
-  //var name: String { get set }
+protocol DetailedStockInfoDataStore {
+    // var name: String { get set }
 }
 
-class DetailedStockInfoInteractor: DetailedStockInfoBusinessLogic, DetailedStockInfoDataStore
-{
-  var presenter: DetailedStockInfoPresentationLogic?
-  var worker: DetailedStockInfoWorker?
-  //var name: String = ""
-  
-  // MARK: Do something
-  
-  func doSomething(request: DetailedStockInfo.Something.Request)
-  {
-    worker = DetailedStockInfoWorker()
-    worker?.doSomeWork()
-    
-    let response = DetailedStockInfo.Something.Response()
-    presenter?.presentSomething(response: response)
-  }
+class DetailedStockInfoInteractor: DetailedStockInfoBusinessLogic, DetailedStockInfoDataStore {
+    var presenter: DetailedStockInfoPresentationLogic?
+    var worker: DetailedStockInfoWorker?
+    // var name: String = ""
+
+    // MARK: Do something
+
+    func doSomething(request: DetailedStockInfo.Something.Request) {
+        worker = DetailedStockInfoWorker()
+        worker?.doSomeWork()
+
+        let response = DetailedStockInfo.Something.Response()
+        presenter?.presentSomething(response: response)
+    }
 }

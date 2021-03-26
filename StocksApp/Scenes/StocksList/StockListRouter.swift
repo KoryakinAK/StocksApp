@@ -12,45 +12,37 @@
 
 import UIKit
 
-@objc protocol StockListRoutingLogic
-{
-  //func routeToSomewhere(segue: UIStoryboardSegue?)
+@objc protocol StockListRoutingLogic {
     func navigateToDetails(source: StockListViewController, destination: DetailedStockInfoViewController)
-
 }
 
-protocol StockListDataPassing
-{
-  var dataStore: StockListDataStore? { get }
+protocol StockListDataPassing {
+    var dataStore: StockListDataStore? { get }
 }
 
-class StockListRouter: NSObject, StockListRoutingLogic, StockListDataPassing
-{
-  weak var viewController: StockListViewController?
-  var dataStore: StockListDataStore?
+class StockListRouter: NSObject, StockListRoutingLogic, StockListDataPassing {
+    weak var viewController: StockListViewController?
+    var dataStore: StockListDataStore?
 
-  
-// MARK: - Routing
-  
-//  func routeToSomewhere()
-//  {
-//    let destinationVC = segue.destination as! DetailedStockInfoViewController
-//    var destinationDS = destinationVC.router!.dataStore!
-//    passDataToSomewhere(source: dataStore!, destination: &destinationDS)
-//  }
+    // MARK: - Routing
 
-// MARK: - Navigation
+    //  func routeToSomewhere()
+    //  {
+    //    let destinationVC = segue.destination as! DetailedStockInfoViewController
+    //    var destinationDS = destinationVC.router!.dataStore!
+    //    passDataToSomewhere(source: dataStore!, destination: &destinationDS)
+    //  }
 
-  func navigateToDetails(source: StockListViewController, destination: DetailedStockInfoViewController)
-  {
-    source.show(destination, sender: nil)
-  }
-  
-// MARK: - Passing data
-  
-  func passDataToDetailedScreen(source: StockListDataStore, destination: inout DetailedStockInfoViewController)
-  {
-//    destination.name = source.name
-    print("passed")
-  }
+    // MARK: - Navigation
+
+    func navigateToDetails(source: StockListViewController, destination: DetailedStockInfoViewController) {
+        source.show(destination, sender: nil)
+    }
+
+    // MARK: - Passing data
+
+    func passDataToDetailedScreen(source: StockListDataStore, destination: inout DetailedStockInfoViewController) {
+        //    destination.name = source.name
+        print("passed")
+    }
 }

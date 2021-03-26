@@ -12,9 +12,7 @@
 
 import UIKit
 
-class StockListWorker
-{
-  func doSomeWork()
-  {
-  }
+class StockListWorker {
+    func doSomeWork() {
+    }
 }

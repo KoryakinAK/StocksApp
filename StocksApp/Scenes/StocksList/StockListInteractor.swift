@@ -12,30 +12,26 @@
 
 import UIKit
 
-protocol StockListBusinessLogic
-{
-  func doSomething(request: StockList.Something.Request)
+protocol StockListBusinessLogic {
+    func doSomething(request: StockList.Something.Request)
 }
 
-protocol StockListDataStore
-{
-  //var name: String { get set }
+protocol StockListDataStore {
+    // var name: String { get set }
 }
 
-class StockListInteractor: StockListBusinessLogic, StockListDataStore
-{
-  var presenter: StockListPresentationLogic?
-  var worker: StockListWorker?
-  //var name: String = ""
-  
-  // MARK: Do something
-  
-  func doSomething(request: StockList.Something.Request)
-  {
-    worker = StockListWorker()
-    worker?.doSomeWork()
-    
-    let response = StockList.Something.Response()
-    presenter?.presentSomething(response: response)
-  }
+class StockListInteractor: StockListBusinessLogic, StockListDataStore {
+    var presenter: StockListPresentationLogic?
+    var worker: StockListWorker?
+    // var name: String = ""
+
+    // MARK: Do something
+
+    func doSomething(request: StockList.Something.Request) {
+        worker = StockListWorker()
+        worker?.doSomeWork()
+
+        let response = StockList.Something.Response()
+        presenter?.presentSomething(response: response)
+    }
 }

@@ -217,6 +217,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = B59878A526025D5C006E74BE /* Build configuration list for PBXNativeTarget "StocksApp" */;
 			buildPhases = (
+				B598796A260E2544006E74BE /* ShellScript */,
 				B598787726025D57006E74BE /* Sources */,
 				B598787826025D57006E74BE /* Frameworks */,
 				B598787926025D57006E74BE /* Resources */,
@@ -333,6 +334,26 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		B598796A260E2544006E74BE /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "if which swiftlint >/dev/null; then\n  swiftlint\nelse\n  echo \"warning: SwiftLint not installed, download from https://github.com/realm/SwiftLint\"\nfi\n";
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		B598787726025D57006E74BE /* Sources */ = {

@@ -1,0 +1,18 @@
+excluded:
+  - stolovka/AppDelegate.swift
+  - stolovka/SceneDelegate.swift
+
+identifier_name:
+  excluded:
+    - id
+    - vc
+
+line_length:
+  warning: 200
+  ignores_function_declarations: true
+  ignores_comments: true
+  ignores_interpolated_strings: true
+  ignores_urls: true
+
+disabled_rules:
+  - unused_closure_parameter

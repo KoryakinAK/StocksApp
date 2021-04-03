@@ -46,6 +46,10 @@
 		B59879622606885E006E74BE /* StockModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B59879612606885E006E74BE /* StockModel.swift */; };
 		B59879632606885E006E74BE /* StockModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B59879612606885E006E74BE /* StockModel.swift */; };
 		B5F1173126165AFF005B544E /* Kingfisher in Frameworks */ = {isa = PBXBuildFile; productRef = B5F1173026165AFF005B544E /* Kingfisher */; };
+		B5F1174B2617BD39005B544E /* UIPriceChangeLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5F1174A2617BD39005B544E /* UIPriceChangeLabel.swift */; };
+		B5F1174C2617BD39005B544E /* UIPriceChangeLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5F1174A2617BD39005B544E /* UIPriceChangeLabel.swift */; };
+		B5F117542617BF23005B544E /* PriceChangeFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5F117532617BF23005B544E /* PriceChangeFormatter.swift */; };
+		B5F117552617BF23005B544E /* PriceChangeFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5F117532617BF23005B544E /* PriceChangeFormatter.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -92,6 +96,8 @@
 		B59879412606666D006E74BE /* DetailedStockInfoInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailedStockInfoInteractor.swift; sourceTree = "<group>"; };
 		B598795B2606867C006E74BE /* StockCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StockCell.swift; sourceTree = "<group>"; };
 		B59879612606885E006E74BE /* StockModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StockModel.swift; sourceTree = "<group>"; };
+		B5F1174A2617BD39005B544E /* UIPriceChangeLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIPriceChangeLabel.swift; sourceTree = "<group>"; };
+		B5F117532617BF23005B544E /* PriceChangeFormatter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PriceChangeFormatter.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -206,6 +212,7 @@
 				B59879412606666D006E74BE /* DetailedStockInfoInteractor.swift */,
 			);
 			path = DetailedStockInfo;
+				B5F117532617BF23005B544E /* PriceChangeFormatter.swift */,
 			sourceTree = "<group>";
 		};
 		B598795426066A20006E74BE /* Common */ = {
@@ -214,6 +221,12 @@
 				B59879612606885E006E74BE /* StockModel.swift */,
 			);
 			path = Common;
+		B5F117492617BD19005B544E /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				B5F1174A2617BD39005B544E /* UIPriceChangeLabel.swift */,
+			);
+			path = Extensions;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -397,6 +410,7 @@
 			files = (
 				B5987933260665E1006E74BE /* StockListModels.swift in Sources */,
 				B59879472606666D006E74BE /* DetailedStockInfoRouter.swift in Sources */,
+				B5F117552617BF23005B544E /* PriceChangeFormatter.swift in Sources */,
 				B598795D2606867C006E74BE /* StockCell.swift in Sources */,
 				B5987937260665E1006E74BE /* StockListInteractor.swift in Sources */,
 				B598792F260665E0006E74BE /* StockListWorker.swift in Sources */,
@@ -407,6 +421,7 @@
 				B598789626025D5C006E74BE /* StocksAppTests.swift in Sources */,
 				B59879432606666D006E74BE /* DetailedStockInfoPresenter.swift in Sources */,
 				B59879632606885E006E74BE /* StockModel.swift in Sources */,
+				B5F1174C2617BD39005B544E /* UIPriceChangeLabel.swift in Sources */,
 				B598792D260665E0006E74BE /* StockListPresenter.swift in Sources */,
 				B59879452606666D006E74BE /* DetailedStockInfoWorker.swift in Sources */,
 				B598794B2606666D006E74BE /* DetailedStockInfoViewController.swift in Sources */,

@@ -6,6 +6,12 @@ identifier_name:
   excluded:
     - id
     - vc
+    - c
+    - h
+    - l
+    - o
+    - pc
+    - t
 
 line_length:
   warning: 200

@@ -13,7 +13,7 @@
 import UIKit
 
 @objc protocol StockListRoutingLogic {
-    func navigateToDetails(source: StockListViewController, destination: DetailedStockInfoViewController)
+//    func navigateToDetails(source: StockListViewController, destination: DetailedStockInfoViewController)
 }
 
 protocol StockListDataPassing {
@@ -35,14 +35,14 @@ class StockListRouter: NSObject, StockListRoutingLogic, StockListDataPassing {
 
     // MARK: - Navigation
 
-    func navigateToDetails(source: StockListViewController, destination: DetailedStockInfoViewController) {
-        source.show(destination, sender: nil)
-    }
+//    func navigateToDetails(source: StockListViewController, destination: DetailedStockInfoViewController) {
+//        source.show(destination, sender: nil)
+//    }
 
     // MARK: - Passing data
 
-    func passDataToDetailedScreen(source: StockListDataStore, destination: inout DetailedStockInfoViewController) {
-        //    destination.name = source.name
-        print("passed")
-    }
+    //    func passDataToDetailedScreen(source: StockListDataStore, destination: inout DetailedStockInfoViewController) {
+    //    destination.name = source.name
+    //        print("passed")
+    //    }
 }

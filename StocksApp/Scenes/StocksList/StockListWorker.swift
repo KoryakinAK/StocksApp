@@ -13,6 +13,5 @@
 import UIKit
 
 class StockListWorker {
-    func doSomeWork() {
-    }
+//    class func requestStockSummary(completion: @escaping (Result<StockSummary, Error) -> Void) {
 }

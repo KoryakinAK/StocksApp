@@ -13,7 +13,7 @@
 import UIKit
 
 protocol StockListBusinessLogic {
-    func doSomething(request: StockList.Something.Request)
+    func downloadStockDataFor(ticker: String)
 }
 
 protocol StockListDataStore {
@@ -23,15 +23,52 @@ protocol StockListDataStore {
 class StockListInteractor: StockListBusinessLogic, StockListDataStore {
     var presenter: StockListPresentationLogic?
     var worker: StockListWorker?
-    // var name: String = ""
 
-    // MARK: Do something
+    func downloadStockDataFor(ticker: String) {
+        DispatchQueue.global(qos: .userInitiated).async {
+            var resultShit: CompanyProfile!
+            var resultMeme: Quote!
+            let APICallsDispatGroup = DispatchGroup()
+            APICallsDispatGroup.enter()
+            StockAPIWorker.requestQuote(endpoint: StocksAPI.getCompanyProfile(ticker: ticker)) { (result: Result<CompanyProfile, Error>)  in
+                switch result {
+                case .success(let response):
+                    print(response)
+                    resultShit = response
+                    APICallsDispatGroup.leave()
+                //                        self.presenter?.presentLoadedStocksData(response: Stock(quote: Quote(c: 100, h: 100, l: 100, o: 100, pc: 100, t: 100), companyProfile: response))
+                case .failure(let error):
+                    //                        APICallsDispatGroup.leave()
+                    // TODO: Уведомить пользователя об ошибке получения данных
+                    break
+                }
+            }
+            APICallsDispatGroup.enter()
+            StockAPIWorker.requestQuote(endpoint: StocksAPI.getQuote(ticker: ticker)) { (result: Result<Quote, Error>)  in
+                        switch result {
+                        case .success(let response):
+                            resultMeme = response
+                            APICallsDispatGroup.leave()
+                        case .failure(let error):
+                            break
+                        }
+                    }
+            APICallsDispatGroup.wait()
+            DispatchQueue.main.async {
+                self.presenter?.presentLoadedStocksData(response: Stock(quote: resultMeme, companyProfile: resultShit))
+            }
+        }
+//        StockAPIWorker.requestQuote(endpoint: StocksAPI.getQuote(ticker: ticker)) { (result: Result<Quote, Error>)  in
+//            switch result {
+//            case .success(let response):
+//                self.presenter?.presentLoadedStocksData(response: Stock(quote: response, ticker: ticker))
+//            case .failure(let error):
+//                break
+//            }
+//        }
 
-    func doSomething(request: StockList.Something.Request) {
-        worker = StockListWorker()
-        worker?.doSomeWork()
+        //        if let quoteResponse = quoteResponse, let companyProfileResponse = companyProfileResponse {
+        //                self.presenter.sendToViewController(data: response)
 
-        let response = StockList.Something.Response()
-        presenter?.presentSomething(response: response)
     }
 }

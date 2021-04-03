@@ -13,7 +13,7 @@
 import UIKit
 
 protocol StockListPresentationLogic {
-    func presentSomething(response: StockList.Something.Response)
+    func presentLoadedStocksData(response: Stock)
 }
 
 class StockListPresenter: StockListPresentationLogic {
@@ -21,8 +21,7 @@ class StockListPresenter: StockListPresentationLogic {
 
     // MARK: Do something
 
-    func presentSomething(response: StockList.Something.Response) {
-        let viewModel = StockList.Something.ViewModel()
-        viewController?.displaySomething(viewModel: viewModel)
+    func presentLoadedStocksData(response: Stock) {
+        viewController?.displayLoaded(stock: response)
     }
 }

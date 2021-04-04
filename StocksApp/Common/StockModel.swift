@@ -24,7 +24,7 @@ struct Stock: Hashable, Codable {
     let name: String
     let currentPrice: Float
     let openPrice: Float
-    let isFaved: Bool
+    var isFaved: Bool
     let country: String
     let marketCapitalization: Float
     let finnhubIndustry: String

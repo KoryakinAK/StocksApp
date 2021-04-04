@@ -15,8 +15,7 @@ class CartTransition: NSObject, UIViewControllerTransitioningDelegate {
     func presentationController(forPresented presented: UIViewController, presenting: UIViewController?, source: UIViewController) -> UIPresentationController? {
         driver.link(to: presented)
 
-        let presentationController = PresentationControllerWithAnimations(presentedViewController: presented,
-                                                                presenting: presenting ?? source)
+        let presentationController = PresentationControllerWithAnimations(presentedViewController: presented, presenting: presenting ?? source)
         presentationController.driver = driver
         return presentationController
     }

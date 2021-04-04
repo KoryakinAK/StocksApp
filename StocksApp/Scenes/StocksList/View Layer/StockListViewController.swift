@@ -159,6 +159,7 @@ class StockListViewController: UIViewController, StockListDisplayLogic, UISearch
         navigationItem.title = "Акции"
         navigationController?.navigationBar.prefersLargeTitles = true
         navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Избранное", style: .plain, target: self, action: #selector(handleFavSelectorTap))
+        navigationItem.leftBarButtonItem = UIBarButtonItem(title: "Обновить", style: .plain, target: self, action: #selector(attemptDataUpdate))
     }
 
     func setupDetailsVCWithTransition() {
@@ -176,6 +177,12 @@ class StockListViewController: UIViewController, StockListDisplayLogic, UISearch
         }
         isShowingOnlyFavourites = !isShowingOnlyFavourites
         stockListTableView.reloadData()
+    }
+
+    @objc func attemptDataUpdate() {
+        dataSource = [Stock]()
+        filteredDataSource = [Stock]()
+        startDownloadingData()
     }
 
     // MARK: - Interactor calls
@@ -220,8 +227,6 @@ extension StockListViewController: UITableViewDataSource, UITableViewDelegate {
     }
 
     func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
-        //        var lastAnimatedItem = -1
-        // TODO: - Добавить анимацию layer.alpha
         if indexPath.row > lastAnimatedStockCell {
             cell.transform = CGAffineTransform(translationX: self.view.bounds.width / 2, y: 0)
             cell.alpha = 0

@@ -14,6 +14,8 @@ import UIKit
 
 protocol StockListBusinessLogic {
     func downloadStockDataFor(ticker: String)
+    func setFavouriteStatusFor(ticker: String, to value: Bool)
+    func getCurrentFavouriteStatusFor(ticker: String) -> Bool
 }
 
 protocol StockListDataStore {
@@ -23,6 +25,18 @@ protocol StockListDataStore {
 class StockListInteractor: StockListBusinessLogic, StockListDataStore {
     var presenter: StockListPresentationLogic?
     var worker: StockListWorker?
+
+    func getCurrentFavouriteStatusFor(ticker: String) -> Bool {
+        return UserDefaultsManager.sharedInstance().checkIfFavouritesContain(ticker: ticker)
+    }
+
+    func setFavouriteStatusFor(ticker: String, to value: Bool) {
+        if value {
+            UserDefaultsManager.sharedInstance().addToFavourites(ticker: ticker)
+        } else {
+            UserDefaultsManager.sharedInstance().removeFromFavourites(ticker: ticker)
+        }
+    }
 
     func downloadStockDataFor(ticker: String) {
         DispatchQueue.global(qos: .userInitiated).async {

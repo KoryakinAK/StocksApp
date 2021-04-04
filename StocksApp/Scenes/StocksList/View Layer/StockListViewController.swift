@@ -188,11 +188,15 @@ extension StockListViewController: UITableViewDataSource, UITableViewDelegate {
         present(detailsViewController, animated: true)
     }
 
-
     // MARK: - Swipe Actions in TableViewCell
     func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
 
         let action = UIContextualAction(style: .normal, title: "Fav") { (action, view, completionHanlder) in
+            let stock = self.dataSource[indexPath.row]
+            if let currentFavStatus = self.interactor?.getCurrentFavouriteStatusFor(ticker: stock.ticker) {
+                self.interactor?.setFavouriteStatusFor(ticker: stock.ticker, to: !currentFavStatus)
+                self.dataSource[indexPath.row].isFaved = !currentFavStatus
+            }
             completionHanlder(true)
         }
 
@@ -200,7 +204,7 @@ extension StockListViewController: UITableViewDataSource, UITableViewDelegate {
 
         action.image = UIImage(systemName: "star", withConfiguration: favIconConfiguration)?
                             .withRenderingMode(.alwaysOriginal)
-                            .withTintColor(.label)
+                            .withTintColor(.white)
         action.backgroundColor = .systemIndigo
         let configuration = UISwipeActionsConfiguration(actions: [action])
         return configuration

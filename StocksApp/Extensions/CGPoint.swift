@@ -8,10 +8,12 @@
 import UIKit
 
 extension CGPoint {
+    // swiftlint:disable operator_whitespace
     static func +(left: CGPoint, right: CGPoint) -> CGPoint {
         return CGPoint(x: left.x + right.x,
                        y: left.y + right.y)
     }
+    // swiftlint:enable operator_whitespace
 }
 
 extension CGPoint {

@@ -23,3 +23,4 @@ line_length:
 
 disabled_rules:
   - unused_closure_parameter
+  - unused_setter_value

@@ -44,6 +44,8 @@
 		B5F1174C2617BD39005B544E /* UIPriceChangeLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5F1174A2617BD39005B544E /* UIPriceChangeLabel.swift */; };
 		B5F117542617BF23005B544E /* PriceChangeFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5F117532617BF23005B544E /* PriceChangeFormatter.swift */; };
 		B5F117552617BF23005B544E /* PriceChangeFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5F117532617BF23005B544E /* PriceChangeFormatter.swift */; };
+		B5F1179D2618E4B8005B544E /* UserDefaultsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5F1179C2618E4B8005B544E /* UserDefaultsManager.swift */; };
+		B5F1179E2618E4B8005B544E /* UserDefaultsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5F1179C2618E4B8005B544E /* UserDefaultsManager.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -91,6 +93,7 @@
 		B5F117202613AB92005B544E /* StockResponseModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StockResponseModels.swift; sourceTree = "<group>"; };
 		B5F1174A2617BD39005B544E /* UIPriceChangeLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIPriceChangeLabel.swift; sourceTree = "<group>"; };
 		B5F117532617BF23005B544E /* PriceChangeFormatter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PriceChangeFormatter.swift; sourceTree = "<group>"; };
+		B5F1179C2618E4B8005B544E /* UserDefaultsManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultsManager.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -142,6 +145,7 @@
 		B598787D26025D57006E74BE /* StocksApp */ = {
 			isa = PBXGroup;
 			children = (
+				B598788726025D5B006E74BE /* Assets.xcassets */,
 				B5F117A62619C1C8005B544E /* App */,
 				B5F117492617BD19005B544E /* Extensions */,
 				B598795426066A20006E74BE /* Common */,
@@ -213,6 +217,7 @@
 		B5F117092613AA85005B544E /* Workers */ = {
 			isa = PBXGroup;
 			children = (
+				B5F1179B2618E4A0005B544E /* UserDefaultsManager */,
 				B5F117132613AAEC005B544E /* StocksAPI */,
 			);
 			path = Workers;
@@ -234,6 +239,14 @@
 				B5F1174A2617BD39005B544E /* UIPriceChangeLabel.swift */,
 			);
 			path = Extensions;
+			sourceTree = "<group>";
+		};
+		B5F1179B2618E4A0005B544E /* UserDefaultsManager */ = {
+			isa = PBXGroup;
+			children = (
+				B5F1179C2618E4B8005B544E /* UserDefaultsManager.swift */,
+			);
+			path = UserDefaultsManager;
 			sourceTree = "<group>";
 		};
 		B5F117A62619C1C8005B544E /* App */ = {
@@ -414,6 +427,7 @@
 				B59879722610DFF6006E74BE /* DetailsViewController.swift in Sources */,
 				B5F1170B2613AAD9005B544E /* StockAPIWorker.swift in Sources */,
 				B5F117212613AB92005B544E /* StockResponseModels.swift in Sources */,
+				B5F1179D2618E4B8005B544E /* UserDefaultsManager.swift in Sources */,
 				B5F1174B2617BD39005B544E /* UIPriceChangeLabel.swift in Sources */,
 				B5987936260665E1006E74BE /* StockListInteractor.swift in Sources */,
 				B5F117542617BF23005B544E /* PriceChangeFormatter.swift in Sources */,
@@ -438,6 +452,7 @@
 				B598792F260665E0006E74BE /* StockListWorker.swift in Sources */,
 				B5987931260665E1006E74BE /* StockListRouter.swift in Sources */,
 				B5987935260665E1006E74BE /* StockListViewController.swift in Sources */,
+				B5F1179E2618E4B8005B544E /* UserDefaultsManager.swift in Sources */,
 				B598789626025D5C006E74BE /* StocksAppTests.swift in Sources */,
 				B59879732610DFF6006E74BE /* DetailsViewController.swift in Sources */,
 				B59879632606885E006E74BE /* StockModel.swift in Sources */,

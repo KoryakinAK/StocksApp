@@ -8,12 +8,11 @@
 import Foundation
 
 struct Stock: Hashable, Codable {
-
-    internal init(ticker: String, name: String, currentPrice: Float, priceChange: Float, isFaved: Bool, country: String, marketCapitalization: Float, finnhubIndustry: String) {
+    internal init(ticker: String, name: String, currentPrice: Float, openPrice: Float, isFaved: Bool, country: String, marketCapitalization: Float, finnhubIndustry: String) {
         self.ticker = ticker
         self.name = name
         self.currentPrice = currentPrice
-        self.openPrice = priceChange
+        self.openPrice = openPrice
         self.isFaved = isFaved
         self.country = country
         self.marketCapitalization = marketCapitalization

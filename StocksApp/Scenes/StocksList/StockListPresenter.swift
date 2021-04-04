@@ -14,6 +14,7 @@ import UIKit
 
 protocol StockListPresentationLogic {
     func presentLoadedStocksData(response: Stock)
+    func presentLoadingFailAlert()
 }
 
 class StockListPresenter: StockListPresentationLogic {
@@ -23,5 +24,10 @@ class StockListPresenter: StockListPresentationLogic {
 
     func presentLoadedStocksData(response: Stock) {
         viewController?.displayLoaded(stock: response)
+    }
+
+    func presentLoadingFailAlert() {
+        // TODO: -Убедиться, что новое уведомление об ошибке не покажется сразу за предыдущим
+        viewController?.displayLoadingError()
     }
 }

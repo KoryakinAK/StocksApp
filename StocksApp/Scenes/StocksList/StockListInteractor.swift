@@ -49,11 +49,12 @@ class StockListInteractor: StockListBusinessLogic, StockListDataStore {
     }
 
     func downloadStockDataFor(ticker: String) {
+        var didFailToLoad: Bool = false
+
         DispatchQueue.global(qos: .userInitiated).async {
             var companyResult: CompanyProfile!
             var quoteResult: Quote!
             let APICallsDispatchGroup = DispatchGroup()
-            var didFailToLoad: Bool = false
             APICallsDispatchGroup.enter()
             StockAPIWorker.requestQuote(endpoint: StocksAPI.getCompanyProfile(ticker: ticker)) { (result: Result<CompanyProfile, Error>)  in
                 switch result {
@@ -82,7 +83,7 @@ class StockListInteractor: StockListBusinessLogic, StockListDataStore {
             APICallsDispatchGroup.wait()
             DispatchQueue.main.async {
                 if didFailToLoad {
-                    // TODO: -Ошибка загрузки
+                    self.presenter?.presentLoadingFailAlert()
                 } else {
                     self.presenter?.presentLoadedStocksData(response: Stock(quote: quoteResult, companyProfile: companyResult))
                 }

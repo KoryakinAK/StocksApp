@@ -14,6 +14,7 @@ import UIKit
 
 protocol StockListDisplayLogic: class {
     func displayLoaded(stock: Stock)
+    func displayLoadingError()
 }
 
 class StockListViewController: UIViewController, StockListDisplayLogic, UISearchResultsUpdating, UISearchBarDelegate {
@@ -25,8 +26,8 @@ class StockListViewController: UIViewController, StockListDisplayLogic, UISearch
     var stockListTableView: UITableView!
     var dataSource = [Stock]()
     var filteredDataSource = [Stock]()
-//    var hardcodedStocksList = ["AAPL", "TSLA", "MSFT", "PLTR", "AMZN", "GOOG", "ABC", "RMD", "VTR"]
-        var hardcodedStocksList = ["TSLA"]
+    //    var hardcodedStocksList = ["AAPL", "TSLA", "MSFT", "PLTR", "AMZN", "GOOG", "ABC", "RMD", "VTR"]
+    var hardcodedStocksList = ["TSLA"]
     var isShowingOnlyFavourites = false
     enum StockFavState: String, CaseIterable {
         case all = "Все акции"
@@ -199,6 +200,12 @@ class StockListViewController: UIViewController, StockListDisplayLogic, UISearch
         dataSource.append(stock)
         stockListTableView.reloadData()
     }
+
+    func displayLoadingError() {
+        let alert = UIAlertController(title: "Ошибка загрузки", message: "Проверьте интернет соединение и нажмите \"Обновить\"", preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "Хорошо", style: .default, handler: nil))
+        self.present(alert, animated: true)
+    }
 }
 
 // MARK: - StockTableView Protocol Conformance
@@ -258,8 +265,8 @@ extension StockListViewController: UITableViewDataSource, UITableViewDelegate {
         let favIconConfiguration = UIImage.SymbolConfiguration(pointSize: 22, weight: .bold)
 
         action.image = UIImage(systemName: "star", withConfiguration: favIconConfiguration)?
-                            .withRenderingMode(.alwaysOriginal)
-                            .withTintColor(.white)
+            .withRenderingMode(.alwaysOriginal)
+            .withTintColor(.white)
         action.backgroundColor = .systemIndigo
         let configuration = UISwipeActionsConfiguration(actions: [action])
         return configuration

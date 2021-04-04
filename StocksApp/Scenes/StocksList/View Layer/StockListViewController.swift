@@ -19,6 +19,7 @@ protocol StockListDisplayLogic: class {
 class StockListViewController: UIViewController, StockListDisplayLogic {
     var interactor: StockListBusinessLogic?
     var router: (NSObjectProtocol & StockListRoutingLogic & StockListDataPassing)?
+    private let cartTransition = CartTransition()
 
     var stockListTableView: UITableView!
 //    var hardcodedStocksList = ["AAPL", "TSLA", "MSFT", "PLTR", "AMZN", "GOOG", "ABC", "RMD", "VTR"]
@@ -94,8 +95,8 @@ class StockListViewController: UIViewController, StockListDisplayLogic {
         navigationItem.title = "Акции"
         navigationController?.navigationBar.prefersLargeTitles = true
         setupTableView()
-        setupDetailsViewWithEffects()
 //        finishCellAnimation()
+        setupDetailsVCWithTransition()
         startDownloadingData()
     }
 
@@ -116,119 +117,36 @@ class StockListViewController: UIViewController, StockListDisplayLogic {
         stockListTableView.separatorColor = .clear
     }
 
-    func setupDetailsViewWithEffects() {
-        visualEffectView.frame = self.view.frame
-        visualEffectView.isUserInteractionEnabled = false
-        view.addSubview(visualEffectView)
+    func setupNavigationItem() {
+        navigationItem.title = "Акции"
+        navigationController?.navigationBar.prefersLargeTitles = true
+        navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Избранное", style: .plain, target: self, action: #selector(handleFavSelectorTap))
+//        navigationItem.leftBarButtonItem = UIBarButtonItem(title: "Здаров", style: .plain, target: self, action: nil)
+    }
 
+    func setupDetailsVCWithTransition() {
         detailsViewController = DetailsViewController()
-        detailsViewController.view.frame = CGRect(x: 0, y: self.view.frame.size.height - detailsViewHandleHeight, width: self.view.bounds.width, height: detailsViewHeight)
-        detailsViewController.view.clipsToBounds = true
-        self.addChild(detailsViewController)
-        view.addSubview(detailsViewController.view)
-
-        let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(handleCartTap(recognizer:)))
-        let panGestureRecognizer = UIPanGestureRecognizer(target: self, action: #selector(handleCartPan(recognizer:)))
-        detailsViewController.handlingArea.addGestureRecognizer(tapGestureRecognizer)
-        detailsViewController.view.addGestureRecognizer(panGestureRecognizer)
+        detailsViewController.transitioningDelegate = cartTransition
+        detailsViewController.modalPresentationStyle = .custom
     }
-
-    // MARK: - Animation handling
-    func prepareForCellAnimation() {
-        for cell in stockListTableView.visibleCells {
-            cell.transform = CGAffineTransform(translationX: (stockListTableView.bounds.width + 30) / 2, y: 0)
+    // MARK: - Navigation Bar buttons
+    @objc func handleFavSelectorTap(sender: UIBarButtonItem) {
+        switch isShowingOnlyFavourites {
+        case true:
+            sender.title = "Избранное"
+        case false:
+            sender.title = "Все акции"
         }
+        isShowingOnlyFavourites = !isShowingOnlyFavourites
+        stockListTableView.reloadData()
     }
 
-    func finishCellAnimation() {
-        for cell in stockListTableView.visibleCells {
-            UIView.animate(withDuration: 5.3, delay: 0.0, usingSpringWithDamping: 0.6, initialSpringVelocity: 11, options: .curveEaseInOut, animations: {
-                cell.transform = .identity
-            })
-        }
-    }
-
-    @objc func handleCartTap(recognizer: UITapGestureRecognizer) {
-        switch recognizer.state {
-        case .ended:
-            animateTransitionIfNeeded(state: nextDetailsState, duration: 0.92)
-        default:
-            break
-        }
-    }
-
-    @objc func handleCartPan(recognizer: UIPanGestureRecognizer) {
-        switch recognizer.state {
-        case .began:
-            if runningAnimations.isEmpty {
-                animateTransitionIfNeeded(state: nextDetailsState, duration: 1.0)
-            }
-            for animator in runningAnimations {
-                animator.pauseAnimation()
-                animationProgressWhenInterrupted = animator.fractionComplete
-            }
-        case .changed:
-            let translation = recognizer.translation(in: self.view)
-            var fractionComplete = translation.y / detailsViewHeight
-            fractionComplete = detailsVisible ? fractionComplete : -fractionComplete
-
-            for animator in runningAnimations {
-                animator.fractionComplete = fractionComplete + animationProgressWhenInterrupted
-            }
-        case .ended:
-
-//            let lastVelocity = recognizer.velocity(in: self.view)
-            for animator in runningAnimations {
-//                if lastVelocity.y < 0 {
-//                    animateTransitionIfNeeded(state: .collapsed, duration: 1.0)
-//                    animator.fractionComplete = 0
-//                } else {
-                animator.continueAnimation(withTimingParameters: nil, durationFactor: 0)
-//                }
-            }
-        default:
-            break
-        }
-    }
-
-    func animateTransitionIfNeeded(state: DetailsState, duration: TimeInterval) {
-        if runningAnimations.isEmpty {
-            let frameAnimator = UIViewPropertyAnimator(duration: duration, dampingRatio: 1.0) {
-                switch state {
-                case .expanded:
-                    self.stockListTableView.transform = CGAffineTransform(scaleX: 0.85, y: 0.85)
-                    self.detailsViewController.view.frame.origin.y = self.view.frame.height - self.detailsViewHeight
-                case .collapsed:
-                    self.stockListTableView.transform = .identity
-                    self.detailsViewController.view.frame.origin.y = self.view.frame.height - self.detailsViewHandleHeight
-                }
-            }
-            frameAnimator.addCompletion { _ in
-                self.detailsVisible = !self.detailsVisible
-//                self.stockListTableView.isScrollEnabled = !self.detailsVisible
-//                self.detailsViewController.view.isUserInteractionEnabled = self.detailsVisible
-                self.runningAnimations.removeAll()
-            }
-            frameAnimator.startAnimation()
-            runningAnimations.append(frameAnimator)
-
-            let blurAnimator = UIViewPropertyAnimator(duration: duration, dampingRatio: 1) {
-                switch state {
-                case .expanded:
-                    self.visualEffectView.effect = UIBlurEffect(style: .dark)
-                case .collapsed:
-                    self.visualEffectView.effect = nil
-                }
-            }
-            blurAnimator.startAnimation()
-            runningAnimations.append(blurAnimator)
-        }
-    }
-
+    // MARK: - Interactor calls
     func startDownloadingData() {
         hardcodedStocksList.forEach { interactor?.downloadStockDataFor(ticker: $0) }
     }
 
+    // MARK: - Presenter functions
     func displayLoaded(stock: Stock) {
         dataSource.append(stock)
         stockListTableView.reloadData()
@@ -267,8 +185,7 @@ extension StockListViewController: UITableViewDataSource, UITableViewDelegate {
     }
 
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        detailsViewController.selectedStock = dataSource[indexPath.row]
-        animateTransitionIfNeeded(state: nextDetailsState, duration: 0.92)
+        present(detailsViewController, animated: true)
     }
 
 

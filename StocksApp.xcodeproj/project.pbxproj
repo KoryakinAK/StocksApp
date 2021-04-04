@@ -44,8 +44,22 @@
 		B5F1174C2617BD39005B544E /* UIPriceChangeLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5F1174A2617BD39005B544E /* UIPriceChangeLabel.swift */; };
 		B5F117542617BF23005B544E /* PriceChangeFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5F117532617BF23005B544E /* PriceChangeFormatter.swift */; };
 		B5F117552617BF23005B544E /* PriceChangeFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5F117532617BF23005B544E /* PriceChangeFormatter.swift */; };
+		B5F117692618B073005B544E /* CartTransition.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5F117682618B073005B544E /* CartTransition.swift */; };
+		B5F1176A2618B073005B544E /* CartTransition.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5F117682618B073005B544E /* CartTransition.swift */; };
+		B5F117722618BBDD005B544E /* CGPoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5F117712618BBDD005B544E /* CGPoint.swift */; };
+		B5F117732618BBDD005B544E /* CGPoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5F117712618BBDD005B544E /* CGPoint.swift */; };
+		B5F1177B2618C06D005B544E /* TransitionDriver.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5F1177A2618C06C005B544E /* TransitionDriver.swift */; };
+		B5F1177C2618C06D005B544E /* TransitionDriver.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5F1177A2618C06C005B544E /* TransitionDriver.swift */; };
+		B5F117812618C464005B544E /* PresentationControllerWithAnimations.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5F117802618C464005B544E /* PresentationControllerWithAnimations.swift */; };
+		B5F117822618C464005B544E /* PresentationControllerWithAnimations.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5F117802618C464005B544E /* PresentationControllerWithAnimations.swift */; };
+		B5F117872618C4B7005B544E /* PresentationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5F117862618C4B7005B544E /* PresentationController.swift */; };
+		B5F117882618C4B7005B544E /* PresentationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5F117862618C4B7005B544E /* PresentationController.swift */; };
+		B5F1178D2618C4DB005B544E /* PresentDismissAnimations.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5F1178C2618C4DB005B544E /* PresentDismissAnimations.swift */; };
+		B5F1178E2618C4DB005B544E /* PresentDismissAnimations.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5F1178C2618C4DB005B544E /* PresentDismissAnimations.swift */; };
 		B5F1179D2618E4B8005B544E /* UserDefaultsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5F1179C2618E4B8005B544E /* UserDefaultsManager.swift */; };
 		B5F1179E2618E4B8005B544E /* UserDefaultsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5F1179C2618E4B8005B544E /* UserDefaultsManager.swift */; };
+		B5F117B42619D8F2005B544E /* UIPanGestureRecognizer+projectedLocation.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5F117B32619D8F2005B544E /* UIPanGestureRecognizer+projectedLocation.swift */; };
+		B5F117B52619D8F2005B544E /* UIPanGestureRecognizer+projectedLocation.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5F117B32619D8F2005B544E /* UIPanGestureRecognizer+projectedLocation.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -93,7 +107,14 @@
 		B5F117202613AB92005B544E /* StockResponseModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StockResponseModels.swift; sourceTree = "<group>"; };
 		B5F1174A2617BD39005B544E /* UIPriceChangeLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIPriceChangeLabel.swift; sourceTree = "<group>"; };
 		B5F117532617BF23005B544E /* PriceChangeFormatter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PriceChangeFormatter.swift; sourceTree = "<group>"; };
+		B5F117682618B073005B544E /* CartTransition.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CartTransition.swift; sourceTree = "<group>"; };
+		B5F117712618BBDD005B544E /* CGPoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CGPoint.swift; sourceTree = "<group>"; };
+		B5F1177A2618C06C005B544E /* TransitionDriver.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransitionDriver.swift; sourceTree = "<group>"; };
+		B5F117802618C464005B544E /* PresentationControllerWithAnimations.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PresentationControllerWithAnimations.swift; sourceTree = "<group>"; };
+		B5F117862618C4B7005B544E /* PresentationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PresentationController.swift; sourceTree = "<group>"; };
+		B5F1178C2618C4DB005B544E /* PresentDismissAnimations.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PresentDismissAnimations.swift; sourceTree = "<group>"; };
 		B5F1179C2618E4B8005B544E /* UserDefaultsManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultsManager.swift; sourceTree = "<group>"; };
+		B5F117B32619D8F2005B544E /* UIPanGestureRecognizer+projectedLocation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIPanGestureRecognizer+projectedLocation.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -199,6 +220,7 @@
 			children = (
 				B59879612606885E006E74BE /* StockModel.swift */,
 				B5F117532617BF23005B544E /* PriceChangeFormatter.swift */,
+				B5F1174A2617BD39005B544E /* UIPriceChangeLabel.swift */,
 			);
 			path = Common;
 			sourceTree = "<group>";
@@ -206,6 +228,7 @@
 		B598797A26124EED006E74BE /* View Layer */ = {
 			isa = PBXGroup;
 			children = (
+				B5F117672618B04B005B544E /* Transition */,
 				B598792A260665E0006E74BE /* StockListViewController.swift */,
 				B59879712610DFF6006E74BE /* DetailsViewController.swift */,
 				B598795B2606867C006E74BE /* StockCell.swift */,
@@ -236,9 +259,22 @@
 		B5F117492617BD19005B544E /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
-				B5F1174A2617BD39005B544E /* UIPriceChangeLabel.swift */,
+				B5F117712618BBDD005B544E /* CGPoint.swift */,
+				B5F117B32619D8F2005B544E /* UIPanGestureRecognizer+projectedLocation.swift */,
 			);
 			path = Extensions;
+			sourceTree = "<group>";
+		};
+		B5F117672618B04B005B544E /* Transition */ = {
+			isa = PBXGroup;
+			children = (
+				B5F117682618B073005B544E /* CartTransition.swift */,
+				B5F117862618C4B7005B544E /* PresentationController.swift */,
+				B5F117802618C464005B544E /* PresentationControllerWithAnimations.swift */,
+				B5F1177A2618C06C005B544E /* TransitionDriver.swift */,
+				B5F1178C2618C4DB005B544E /* PresentDismissAnimations.swift */,
+			);
+			path = Transition;
 			sourceTree = "<group>";
 		};
 		B5F1179B2618E4A0005B544E /* UserDefaultsManager */ = {
@@ -254,9 +290,8 @@
 			children = (
 				B598787E26025D57006E74BE /* AppDelegate.swift */,
 				B598788026025D57006E74BE /* SceneDelegate.swift */,
-				B598788726025D5B006E74BE /* Assets.xcassets */,
-				B598788926025D5B006E74BE /* LaunchScreen.storyboard */,
 				B598788C26025D5B006E74BE /* Info.plist */,
+				B598788926025D5B006E74BE /* LaunchScreen.storyboard */,
 			);
 			path = App;
 			sourceTree = "<group>";
@@ -419,6 +454,8 @@
 			files = (
 				B52DE07626125F0C00071CE3 /* DetailsCell.swift in Sources */,
 				B598787F26025D57006E74BE /* AppDelegate.swift in Sources */,
+				B5F117692618B073005B544E /* CartTransition.swift in Sources */,
+				B5F117B42619D8F2005B544E /* UIPanGestureRecognizer+projectedLocation.swift in Sources */,
 				B598788126025D57006E74BE /* SceneDelegate.swift in Sources */,
 				B598792C260665E0006E74BE /* StockListPresenter.swift in Sources */,
 				B598792E260665E0006E74BE /* StockListWorker.swift in Sources */,
@@ -432,7 +469,12 @@
 				B5987936260665E1006E74BE /* StockListInteractor.swift in Sources */,
 				B5F117542617BF23005B544E /* PriceChangeFormatter.swift in Sources */,
 				B5987930260665E0006E74BE /* StockListRouter.swift in Sources */,
+				B5F117722618BBDD005B544E /* CGPoint.swift in Sources */,
+				B5F1178D2618C4DB005B544E /* PresentDismissAnimations.swift in Sources */,
 				B52DE07C2612658700071CE3 /* StocksAPIConfig.swift in Sources */,
+				B5F1177B2618C06D005B544E /* TransitionDriver.swift in Sources */,
+				B5F117812618C464005B544E /* PresentationControllerWithAnimations.swift in Sources */,
+				B5F117872618C4B7005B544E /* PresentationController.swift in Sources */,
 				B5987934260665E1006E74BE /* StockListViewController.swift in Sources */,
 				B598795C2606867C006E74BE /* StockCell.swift in Sources */,
 			);
@@ -444,18 +486,25 @@
 			files = (
 				B5987933260665E1006E74BE /* StockListModels.swift in Sources */,
 				B5F1170C2613AAD9005B544E /* StockAPIWorker.swift in Sources */,
+				B5F117822618C464005B544E /* PresentationControllerWithAnimations.swift in Sources */,
+				B5F117882618C4B7005B544E /* PresentationController.swift in Sources */,
 				B52DE07D2612658700071CE3 /* StocksAPIConfig.swift in Sources */,
 				B5F117552617BF23005B544E /* PriceChangeFormatter.swift in Sources */,
 				B598795D2606867C006E74BE /* StockCell.swift in Sources */,
 				B5987937260665E1006E74BE /* StockListInteractor.swift in Sources */,
+				B5F117B52619D8F2005B544E /* UIPanGestureRecognizer+projectedLocation.swift in Sources */,
 				B52DE07726125F0C00071CE3 /* DetailsCell.swift in Sources */,
 				B598792F260665E0006E74BE /* StockListWorker.swift in Sources */,
 				B5987931260665E1006E74BE /* StockListRouter.swift in Sources */,
+				B5F1178E2618C4DB005B544E /* PresentDismissAnimations.swift in Sources */,
 				B5987935260665E1006E74BE /* StockListViewController.swift in Sources */,
 				B5F1179E2618E4B8005B544E /* UserDefaultsManager.swift in Sources */,
 				B598789626025D5C006E74BE /* StocksAppTests.swift in Sources */,
+				B5F117732618BBDD005B544E /* CGPoint.swift in Sources */,
+				B5F1176A2618B073005B544E /* CartTransition.swift in Sources */,
 				B59879732610DFF6006E74BE /* DetailsViewController.swift in Sources */,
 				B59879632606885E006E74BE /* StockModel.swift in Sources */,
+				B5F1177C2618C06D005B544E /* TransitionDriver.swift in Sources */,
 				B5F1174C2617BD39005B544E /* UIPriceChangeLabel.swift in Sources */,
 				B598792D260665E0006E74BE /* StockListPresenter.swift in Sources */,
 				B5F117222613AB92005B544E /* StockResponseModels.swift in Sources */,

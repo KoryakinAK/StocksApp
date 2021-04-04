@@ -142,15 +142,11 @@
 		B598787D26025D57006E74BE /* StocksApp */ = {
 			isa = PBXGroup;
 			children = (
+				B5F117A62619C1C8005B544E /* App */,
 				B5F117492617BD19005B544E /* Extensions */,
 				B598795426066A20006E74BE /* Common */,
 				B59878D126026159006E74BE /* Scenes */,
 				B5F117092613AA85005B544E /* Workers */,
-				B598787E26025D57006E74BE /* AppDelegate.swift */,
-				B598788026025D57006E74BE /* SceneDelegate.swift */,
-				B598788726025D5B006E74BE /* Assets.xcassets */,
-				B598788926025D5B006E74BE /* LaunchScreen.storyboard */,
-				B598788C26025D5B006E74BE /* Info.plist */,
 			);
 			path = StocksApp;
 			sourceTree = "<group>";
@@ -238,6 +234,18 @@
 				B5F1174A2617BD39005B544E /* UIPriceChangeLabel.swift */,
 			);
 			path = Extensions;
+			sourceTree = "<group>";
+		};
+		B5F117A62619C1C8005B544E /* App */ = {
+			isa = PBXGroup;
+			children = (
+				B598787E26025D57006E74BE /* AppDelegate.swift */,
+				B598788026025D57006E74BE /* SceneDelegate.swift */,
+				B598788726025D5B006E74BE /* Assets.xcassets */,
+				B598788926025D5B006E74BE /* LaunchScreen.storyboard */,
+				B598788C26025D5B006E74BE /* Info.plist */,
+			);
+			path = App;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */

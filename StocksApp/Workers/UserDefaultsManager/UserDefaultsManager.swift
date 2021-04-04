@@ -26,7 +26,6 @@ class UserDefaultsManager {
     }
 
     func addToFavourites(ticker: String) {
-        print("adding \(ticker)")
         var favourites = getFavouritesArray()
         if !favourites.contains(ticker) {
             favourites.append(ticker)
@@ -36,7 +35,6 @@ class UserDefaultsManager {
 
     func removeFromFavourites(ticker: String) {
         var favourites = getFavouritesArray()
-        print("removing \(ticker)")
         favourites = favourites.filter {$0 != ticker}
         UserDefaults.standard.setValue(favourites, forKey: favsKey)
     }

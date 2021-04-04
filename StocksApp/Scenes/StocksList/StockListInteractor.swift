@@ -39,15 +39,17 @@ class StockListInteractor: StockListBusinessLogic, StockListDataStore {
     }
 
     func downloadStockDataFor(ticker: String) {
+        var resultShit: CompanyProfile!
+        var resultMeme: Quote!
+//        let lol = Stock(ticker: "TSLA", name: "Tesla", currentPrice: 840.32, openPrice: 830.1, isFaved: false, country: "US", marketCapitalization: 48381242.12, finnhubIndustry: "Tachki")
+//        self.presenter?.presentLoadedStocksData(response: lol)
+
         DispatchQueue.global(qos: .userInitiated).async {
-            var resultShit: CompanyProfile!
-            var resultMeme: Quote!
             let APICallsDispatGroup = DispatchGroup()
             APICallsDispatGroup.enter()
             StockAPIWorker.requestQuote(endpoint: StocksAPI.getCompanyProfile(ticker: ticker)) { (result: Result<CompanyProfile, Error>)  in
                 switch result {
                 case .success(let response):
-                    print(response)
                     resultShit = response
                     APICallsDispatGroup.leave()
                 //                        self.presenter?.presentLoadedStocksData(response: Stock(quote: Quote(c: 100, h: 100, l: 100, o: 100, pc: 100, t: 100), companyProfile: response))

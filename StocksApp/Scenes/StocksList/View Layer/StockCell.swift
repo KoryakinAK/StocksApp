@@ -53,6 +53,7 @@ class StockCell: UITableViewCell {
             self.contentView.addSubview($0)
         }
         self.backgroundColor = .systemBackground
+        self.selectionStyle = .none
         self.currentPrice.textAlignment = .right
         self.priceChange.textAlignment = .right
         self.name.textAlignment = .left

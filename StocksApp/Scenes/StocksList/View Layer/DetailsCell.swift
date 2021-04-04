@@ -32,6 +32,7 @@ class DetailsCell: UITableViewCell {
             $0.translatesAutoresizingMaskIntoConstraints = false
             self.contentView.addSubview($0)
         }
+        self.selectionStyle = .none
 
         // MARK: - Cell content autolayout
         NSLayoutConstraint.activate([

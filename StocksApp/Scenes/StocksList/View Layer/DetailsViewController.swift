@@ -47,7 +47,7 @@ class DetailsViewController: UIViewController, DetailsViewControllerProtocol {
     }
 
     func setStockPlaceHolder() {
-        self.selectedStock = Stock(ticker: "", name: "", currentPrice: 0.00, priceChange: 0.00, isFaved: false, country: "", marketCapitalization: 0.00, finnhubIndustry: "")
+        self.selectedStock = Stock(ticker: "", name: "", currentPrice: 0.00, openPrice: 0.00, isFaved: false, country: "", marketCapitalization: 0.00, finnhubIndustry: "")
     }
 
     func setStockInfoTableView() {
@@ -64,6 +64,7 @@ class DetailsViewController: UIViewController, DetailsViewControllerProtocol {
         stockInfoTableView.register(DetailsCell.self, forCellReuseIdentifier: DetailsCell.reuseIdentifier)
         stockInfoTableView.backgroundColor = .clear
         stockInfoTableView.separatorColor = .clear
+        stockInfoTableView.isScrollEnabled = false
     }
 
     func setHandlingArea() {

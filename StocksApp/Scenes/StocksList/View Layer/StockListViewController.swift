@@ -16,16 +16,26 @@ protocol StockListDisplayLogic: class {
     func displayLoaded(stock: Stock)
 }
 
-class StockListViewController: UIViewController, StockListDisplayLogic {
+class StockListViewController: UIViewController, StockListDisplayLogic, UISearchResultsUpdating, UISearchBarDelegate {
+
     var interactor: StockListBusinessLogic?
     var router: (NSObjectProtocol & StockListRoutingLogic & StockListDataPassing)?
     private let cartTransition = CartTransition()
 
     var stockListTableView: UITableView!
-//    var hardcodedStocksList = ["AAPL", "TSLA", "MSFT", "PLTR", "AMZN", "GOOG", "ABC", "RMD", "VTR"]
-        var hardcodedStocksList = ["TSLA"]
-
     var dataSource = [Stock]()
+    var filteredDataSource = [Stock]()
+    var hardcodedStocksList = ["AAPL", "TSLA", "MSFT", "PLTR", "AMZN", "GOOG", "ABC", "RMD", "VTR"]
+//        var hardcodedStocksList = ["TSLA"]
+    var isShowingOnlyFavourites = false
+    enum StockFavState: String, CaseIterable {
+        case all = "Все акции"
+        case faved = "Избранное"
+
+    }
+
+    var searchController = UISearchController()
+
     var lastAnimatedStockCell = -1
 
     // MARK: - Details
@@ -57,7 +67,6 @@ class StockListViewController: UIViewController, StockListDisplayLogic {
     }
 
     // MARK: Setup
-
     private func setup() {
         let viewController = self
         let interactor = StockListInteractor()
@@ -72,7 +81,6 @@ class StockListViewController: UIViewController, StockListDisplayLogic {
     }
 
     // MARK: Routing
-
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if let scene = segue.identifier {
             let selector = NSSelectorFromString("routeTo\(scene)WithSegue:")
@@ -83,21 +91,51 @@ class StockListViewController: UIViewController, StockListDisplayLogic {
     }
 
     // MARK: View lifecycle
-
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-//        prepareForCellAnimation()
     }
 
     override func viewDidLoad() {
         super.viewDidLoad()
         self.view.backgroundColor = .systemBackground
-        navigationItem.title = "Акции"
-        navigationController?.navigationBar.prefersLargeTitles = true
         setupTableView()
-//        finishCellAnimation()
+        setupNavigationItem()
         setupDetailsVCWithTransition()
+        setupSearchController()
         startDownloadingData()
+    }
+
+    // MARK: - Search Controller
+    func setupSearchController() {
+        searchController.searchResultsUpdater = self
+        searchController.obscuresBackgroundDuringPresentation = false
+        searchController.searchBar.enablesReturnKeyAutomatically = false
+        searchController.searchBar.returnKeyType = .done
+        navigationItem.searchController = searchController
+        navigationItem.hidesSearchBarWhenScrolling = false
+        searchController.searchBar.scopeButtonTitles = StockFavState.allCases.map { $0.rawValue }
+        searchController.searchBar.delegate = self
+    }
+
+    func updateSearchResults(for searchController: UISearchController) {
+        let searchBar = searchController.searchBar
+        let scopeTextValue = searchBar.scopeButtonTitles![searchBar.selectedScopeButtonIndex]
+        let scope = scopeTextValue == StockFavState.all.rawValue ? StockFavState.all : StockFavState.faved
+        let searchText = searchBar.text!
+        filterForSearchTextAndScope(searchText: searchText, scope: scope)
+    }
+
+    func filterForSearchTextAndScope(searchText: String, scope: StockFavState) {
+        filteredDataSource = dataSource.filter { stock in
+            let scopeMatch = (scope == .all || stock.isFaved )
+            if searchController.searchBar.text != "" {
+                let searchTextMatch = stock.ticker.uppercased().contains(searchText.uppercased())
+                return scopeMatch && searchTextMatch
+            } else {
+                return scopeMatch
+            }
+        }
+        stockListTableView.reloadData()
     }
 
     func setupTableView() {
@@ -121,7 +159,6 @@ class StockListViewController: UIViewController, StockListDisplayLogic {
         navigationItem.title = "Акции"
         navigationController?.navigationBar.prefersLargeTitles = true
         navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Избранное", style: .plain, target: self, action: #selector(handleFavSelectorTap))
-//        navigationItem.leftBarButtonItem = UIBarButtonItem(title: "Здаров", style: .plain, target: self, action: nil)
     }
 
     func setupDetailsVCWithTransition() {
@@ -156,6 +193,9 @@ class StockListViewController: UIViewController, StockListDisplayLogic {
 // MARK: - StockTableView Protocol Conformance
 extension StockListViewController: UITableViewDataSource, UITableViewDelegate {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        if searchController.isActive {
+            return filteredDataSource.count
+        }
         return dataSource.count
     }
 
@@ -163,7 +203,11 @@ extension StockListViewController: UITableViewDataSource, UITableViewDelegate {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: StockCell.reuseIdentifier, for: indexPath) as? StockCell else {
             fatalError()
         }
-        cell.configure(with: dataSource[indexPath.row])
+        if searchController.isActive {
+            cell.configure(with: filteredDataSource[indexPath.row])
+        } else {
+            cell.configure(with: dataSource[indexPath.row])
+        }
         return cell
     }
 
@@ -173,12 +217,14 @@ extension StockListViewController: UITableViewDataSource, UITableViewDelegate {
 
     func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
         //        var lastAnimatedItem = -1
-        //        guard let cell = stockListTableView.cellForRow(at: indexPath) as? StockCell else { return }
         // TODO: - Добавить анимацию layer.alpha
         if indexPath.row > lastAnimatedStockCell {
             cell.transform = CGAffineTransform(translationX: self.view.bounds.width / 2, y: 0)
-            UIView.animate(withDuration: 1.3, delay: Double(indexPath.row) * 0.09, usingSpringWithDamping: 0.7, initialSpringVelocity: 11, options: .curveEaseInOut, animations: {
+            cell.alpha = 0
+            UIView.animate(withDuration: 5.3, delay: Double(indexPath.row) * 0.09, usingSpringWithDamping: 0.7, initialSpringVelocity: 11, options: .curveEaseInOut, animations: {
                 cell.transform = .identity
+                cell.alpha = 1
+
             })
             lastAnimatedStockCell = indexPath.row
         }

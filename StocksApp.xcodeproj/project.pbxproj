@@ -23,8 +23,6 @@
 		B598792F260665E0006E74BE /* StockListWorker.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5987927260665E0006E74BE /* StockListWorker.swift */; };
 		B5987930260665E0006E74BE /* StockListRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5987928260665E0006E74BE /* StockListRouter.swift */; };
 		B5987931260665E1006E74BE /* StockListRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5987928260665E0006E74BE /* StockListRouter.swift */; };
-		B5987932260665E1006E74BE /* StockListModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5987929260665E0006E74BE /* StockListModels.swift */; };
-		B5987933260665E1006E74BE /* StockListModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5987929260665E0006E74BE /* StockListModels.swift */; };
 		B5987934260665E1006E74BE /* StockListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B598792A260665E0006E74BE /* StockListViewController.swift */; };
 		B5987935260665E1006E74BE /* StockListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B598792A260665E0006E74BE /* StockListViewController.swift */; };
 		B5987936260665E1006E74BE /* StockListInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = B598792B260665E0006E74BE /* StockListInteractor.swift */; };
@@ -67,7 +65,6 @@
 		B5F117C5261A6797005B544E /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B598788026025D57006E74BE /* SceneDelegate.swift */; };
 		B5F117C6261A6797005B544E /* StockListPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5987926260665E0006E74BE /* StockListPresenter.swift */; };
 		B5F117C7261A6797005B544E /* StockListWorker.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5987927260665E0006E74BE /* StockListWorker.swift */; };
-		B5F117C8261A6797005B544E /* StockListModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5987929260665E0006E74BE /* StockListModels.swift */; };
 		B5F117C9261A6797005B544E /* StockModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B59879612606885E006E74BE /* StockModel.swift */; };
 		B5F117CA261A6797005B544E /* DetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B59879712610DFF6006E74BE /* DetailsViewController.swift */; };
 		B5F117CB261A6797005B544E /* StockAPIWorker.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5F1170A2613AAD9005B544E /* StockAPIWorker.swift */; };
@@ -132,7 +129,6 @@
 		B5987926260665E0006E74BE /* StockListPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StockListPresenter.swift; sourceTree = "<group>"; };
 		B5987927260665E0006E74BE /* StockListWorker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StockListWorker.swift; sourceTree = "<group>"; };
 		B5987928260665E0006E74BE /* StockListRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StockListRouter.swift; sourceTree = "<group>"; };
-		B5987929260665E0006E74BE /* StockListModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StockListModels.swift; sourceTree = "<group>"; };
 		B598792A260665E0006E74BE /* StockListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StockListViewController.swift; sourceTree = "<group>"; };
 		B598792B260665E0006E74BE /* StockListInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StockListInteractor.swift; sourceTree = "<group>"; };
 		B598795B2606867C006E74BE /* StockCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StockCell.swift; sourceTree = "<group>"; };
@@ -261,7 +257,6 @@
 				B5987926260665E0006E74BE /* StockListPresenter.swift */,
 				B5987927260665E0006E74BE /* StockListWorker.swift */,
 				B5987928260665E0006E74BE /* StockListRouter.swift */,
-				B5987929260665E0006E74BE /* StockListModels.swift */,
 				B598792B260665E0006E74BE /* StockListInteractor.swift */,
 			);
 			path = StocksList;
@@ -565,7 +560,6 @@
 				B598788126025D57006E74BE /* SceneDelegate.swift in Sources */,
 				B598792C260665E0006E74BE /* StockListPresenter.swift in Sources */,
 				B598792E260665E0006E74BE /* StockListWorker.swift in Sources */,
-				B5987932260665E1006E74BE /* StockListModels.swift in Sources */,
 				B59879622606885E006E74BE /* StockModel.swift in Sources */,
 				B59879722610DFF6006E74BE /* DetailsViewController.swift in Sources */,
 				B5F1170B2613AAD9005B544E /* StockAPIWorker.swift in Sources */,
@@ -590,7 +584,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				B5987933260665E1006E74BE /* StockListModels.swift in Sources */,
 				B5F1170C2613AAD9005B544E /* StockAPIWorker.swift in Sources */,
 				B5F117822618C464005B544E /* PresentationControllerWithAnimations.swift in Sources */,
 				B5F117882618C4B7005B544E /* PresentationController.swift in Sources */,
@@ -638,7 +631,6 @@
 				B5F117C5261A6797005B544E /* SceneDelegate.swift in Sources */,
 				B5F117C6261A6797005B544E /* StockListPresenter.swift in Sources */,
 				B5F117C7261A6797005B544E /* StockListWorker.swift in Sources */,
-				B5F117C8261A6797005B544E /* StockListModels.swift in Sources */,
 				B5F117C9261A6797005B544E /* StockModel.swift in Sources */,
 				B5F117CA261A6797005B544E /* DetailsViewController.swift in Sources */,
 				B5F117CB261A6797005B544E /* StockAPIWorker.swift in Sources */,

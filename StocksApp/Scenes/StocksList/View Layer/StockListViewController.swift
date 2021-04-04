@@ -70,6 +70,7 @@ class StockListViewController: UIViewController, StockListDisplayLogic, UISearch
     // MARK: Setup
     private func setup() {
         let viewController = self
+        detailsViewController = DetailsViewController()
         let interactor = StockListInteractor()
         let presenter = StockListPresenter()
         let router = StockListRouter()
@@ -77,6 +78,7 @@ class StockListViewController: UIViewController, StockListDisplayLogic, UISearch
         viewController.router = router
         interactor.presenter = presenter
         presenter.viewController = viewController
+        presenter.detailsVC = detailsViewController
         router.viewController = viewController
         router.dataStore = interactor
     }
@@ -164,10 +166,10 @@ class StockListViewController: UIViewController, StockListDisplayLogic, UISearch
     }
 
     func setupDetailsVCWithTransition() {
-        detailsViewController = DetailsViewController()
         detailsViewController.transitioningDelegate = cartTransition
         detailsViewController.modalPresentationStyle = .custom
     }
+
     // MARK: - Navigation Bar buttons
     @objc func handleFavSelectorTap(sender: UIBarButtonItem) {
         switch isShowingOnlyFavourites {
@@ -247,6 +249,12 @@ extension StockListViewController: UITableViewDataSource, UITableViewDelegate {
     }
 
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        switch searchController.searchBar.selectedScopeButtonIndex {
+        case 1: // Избранное
+            interactor?.sendToDetailsVC(stock: filteredDataSource[indexPath.row])
+        default: // Все акции
+            interactor?.sendToDetailsVC(stock: dataSource[indexPath.row])
+        }
         present(detailsViewController, animated: true)
     }
 

@@ -13,14 +13,18 @@
 import UIKit
 
 protocol StockListPresentationLogic {
+    func presentToDetailsVC(stock: Stock)
     func presentLoadedStocksData(response: Stock)
     func presentLoadingFailAlert()
 }
 
 class StockListPresenter: StockListPresentationLogic {
     weak var viewController: StockListDisplayLogic?
+    weak var detailsVC: DetailsDisplayLogic?
 
-    // MARK: Do something
+    func presentToDetailsVC(stock: Stock) {
+        detailsVC?.displaySelected(stock: stock)
+    }
 
     func presentLoadedStocksData(response: Stock) {
         viewController?.displayLoaded(stock: response)

@@ -7,14 +7,15 @@
 
 import UIKit
 
-protocol DetailsViewControllerProtocol: class {
+protocol DetailsDisplayLogic: class {
     var handlingArea: UIView { get }
     var selectedStock: Stock! { get set }
+    func displaySelected(stock: Stock)
 }
 
-class DetailsViewController: UIViewController, DetailsViewControllerProtocol {
+class DetailsViewController: UIViewController, DetailsDisplayLogic {
     let handlingArea = UIView()
-    var stockInfoTableView: UITableView!
+    var stockInfoTableView = UITableView(frame: .zero, style: .grouped)
     var selectedStock: Stock! {
         willSet {
             values[0] = newValue.name
@@ -26,17 +27,17 @@ class DetailsViewController: UIViewController, DetailsViewControllerProtocol {
         }
     }
 
-    let titles = ["Name", "Ticker", "Country", "Market Cap", "Industry"]
+    let titles = ["Имя", "Тикер", "Страна", "Капитализация", "Индустрия"]
     var values = [String].init(repeating: "-", count: 5)
 
     /* enum stockTableViewConfiguration: Int {
-        case Name = 0
-        case Ticker = 1
-        case Price = 2
-        case PriceChange = 3
-        case Volume = 4
-        case Chart = 5
-    }*/
+     case Name = 0
+     case Ticker = 1
+     case Price = 2
+     case PriceChange = 3
+     case Volume = 4
+     case Chart = 5
+     }*/
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -51,7 +52,6 @@ class DetailsViewController: UIViewController, DetailsViewControllerProtocol {
     }
 
     func setStockInfoTableView() {
-        stockInfoTableView = UITableView(frame: .zero, style: .grouped)
         stockInfoTableView.delegate = self
         stockInfoTableView.dataSource = self
         stockInfoTableView.translatesAutoresizingMaskIntoConstraints = false
@@ -78,6 +78,10 @@ class DetailsViewController: UIViewController, DetailsViewControllerProtocol {
             handlingArea.heightAnchor.constraint(equalToConstant: 120)
 
         ])
+    }
+
+    func displaySelected(stock: Stock) {
+        self.selectedStock = stock
     }
 }
 

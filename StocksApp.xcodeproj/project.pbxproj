@@ -60,6 +60,41 @@
 		B5F1179E2618E4B8005B544E /* UserDefaultsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5F1179C2618E4B8005B544E /* UserDefaultsManager.swift */; };
 		B5F117B42619D8F2005B544E /* UIPanGestureRecognizer+projectedLocation.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5F117B32619D8F2005B544E /* UIPanGestureRecognizer+projectedLocation.swift */; };
 		B5F117B52619D8F2005B544E /* UIPanGestureRecognizer+projectedLocation.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5F117B32619D8F2005B544E /* UIPanGestureRecognizer+projectedLocation.swift */; };
+		B5F117C1261A6797005B544E /* DetailsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B52DE07526125F0C00071CE3 /* DetailsCell.swift */; };
+		B5F117C2261A6797005B544E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B598787E26025D57006E74BE /* AppDelegate.swift */; };
+		B5F117C3261A6797005B544E /* CartTransition.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5F117682618B073005B544E /* CartTransition.swift */; };
+		B5F117C4261A6797005B544E /* UIPanGestureRecognizer+projectedLocation.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5F117B32619D8F2005B544E /* UIPanGestureRecognizer+projectedLocation.swift */; };
+		B5F117C5261A6797005B544E /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B598788026025D57006E74BE /* SceneDelegate.swift */; };
+		B5F117C6261A6797005B544E /* StockListPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5987926260665E0006E74BE /* StockListPresenter.swift */; };
+		B5F117C7261A6797005B544E /* StockListWorker.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5987927260665E0006E74BE /* StockListWorker.swift */; };
+		B5F117C8261A6797005B544E /* StockListModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5987929260665E0006E74BE /* StockListModels.swift */; };
+		B5F117C9261A6797005B544E /* StockModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B59879612606885E006E74BE /* StockModel.swift */; };
+		B5F117CA261A6797005B544E /* DetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B59879712610DFF6006E74BE /* DetailsViewController.swift */; };
+		B5F117CB261A6797005B544E /* StockAPIWorker.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5F1170A2613AAD9005B544E /* StockAPIWorker.swift */; };
+		B5F117CC261A6797005B544E /* StockResponseModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5F117202613AB92005B544E /* StockResponseModels.swift */; };
+		B5F117CD261A6797005B544E /* UserDefaultsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5F1179C2618E4B8005B544E /* UserDefaultsManager.swift */; };
+		B5F117CE261A6797005B544E /* UIPriceChangeLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5F1174A2617BD39005B544E /* UIPriceChangeLabel.swift */; };
+		B5F117CF261A6797005B544E /* StockListInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = B598792B260665E0006E74BE /* StockListInteractor.swift */; };
+		B5F117D0261A6797005B544E /* PriceChangeFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5F117532617BF23005B544E /* PriceChangeFormatter.swift */; };
+		B5F117D1261A6797005B544E /* StockListRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5987928260665E0006E74BE /* StockListRouter.swift */; };
+		B5F117D2261A6797005B544E /* CGPoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5F117712618BBDD005B544E /* CGPoint.swift */; };
+		B5F117D3261A6797005B544E /* PresentDismissAnimations.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5F1178C2618C4DB005B544E /* PresentDismissAnimations.swift */; };
+		B5F117D4261A6797005B544E /* StocksAPIConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = B52DE07B2612658700071CE3 /* StocksAPIConfig.swift */; };
+		B5F117D5261A6797005B544E /* TransitionDriver.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5F1177A2618C06C005B544E /* TransitionDriver.swift */; };
+		B5F117D6261A6797005B544E /* PresentationControllerWithAnimations.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5F117802618C464005B544E /* PresentationControllerWithAnimations.swift */; };
+		B5F117D7261A6797005B544E /* PresentationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5F117862618C4B7005B544E /* PresentationController.swift */; };
+		B5F117D8261A6797005B544E /* StockListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B598792A260665E0006E74BE /* StockListViewController.swift */; };
+		B5F117D9261A6797005B544E /* StockCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B598795B2606867C006E74BE /* StockCell.swift */; };
+		B5F117DB261A6797005B544E /* Kingfisher in Frameworks */ = {isa = PBXBuildFile; productRef = B5F117BD261A6797005B544E /* Kingfisher */; };
+		B5F117DD261A6797005B544E /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B598788926025D5B006E74BE /* LaunchScreen.storyboard */; };
+		B5F117DE261A6797005B544E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B598788726025D5B006E74BE /* Assets.xcassets */; };
+		B5F11805261A6D6A005B544E /* CompanyProfileOfflineData.json in Resources */ = {isa = PBXBuildFile; fileRef = B5F11804261A6D6A005B544E /* CompanyProfileOfflineData.json */; };
+		B5F11806261A6D6A005B544E /* CompanyProfileOfflineData.json in Resources */ = {isa = PBXBuildFile; fileRef = B5F11804261A6D6A005B544E /* CompanyProfileOfflineData.json */; };
+		B5F1180C261A6E33005B544E /* QuoteOfflineData.json in Resources */ = {isa = PBXBuildFile; fileRef = B5F1180B261A6E33005B544E /* QuoteOfflineData.json */; };
+		B5F1180D261A6E33005B544E /* QuoteOfflineData.json in Resources */ = {isa = PBXBuildFile; fileRef = B5F1180B261A6E33005B544E /* QuoteOfflineData.json */; };
+		B5F1181B261A6F1C005B544E /* Bundle+decode.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5F1181A261A6F1C005B544E /* Bundle+decode.swift */; };
+		B5F1181C261A6F1C005B544E /* Bundle+decode.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5F1181A261A6F1C005B544E /* Bundle+decode.swift */; };
+		B5F11825261A7341005B544E /* Bundle+decode.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5F1181A261A6F1C005B544E /* Bundle+decode.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -115,6 +150,11 @@
 		B5F1178C2618C4DB005B544E /* PresentDismissAnimations.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PresentDismissAnimations.swift; sourceTree = "<group>"; };
 		B5F1179C2618E4B8005B544E /* UserDefaultsManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultsManager.swift; sourceTree = "<group>"; };
 		B5F117B32619D8F2005B544E /* UIPanGestureRecognizer+projectedLocation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIPanGestureRecognizer+projectedLocation.swift"; sourceTree = "<group>"; };
+		B5F117E2261A6797005B544E /* StocksAppOffline.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = StocksAppOffline.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		B5F117E3261A6797005B544E /* StocksApp copy-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = "StocksApp copy-Info.plist"; path = "/Users/un/Documents/GitHub/StocksApp/StocksApp copy-Info.plist"; sourceTree = "<absolute>"; };
+		B5F11804261A6D6A005B544E /* CompanyProfileOfflineData.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = CompanyProfileOfflineData.json; sourceTree = "<group>"; };
+		B5F1180B261A6E33005B544E /* QuoteOfflineData.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = QuoteOfflineData.json; sourceTree = "<group>"; };
+		B5F1181A261A6F1C005B544E /* Bundle+decode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Bundle+decode.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -140,6 +180,14 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		B5F117DA261A6797005B544E /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				B5F117DB261A6797005B544E /* Kingfisher in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
@@ -150,6 +198,7 @@
 				B598789426025D5C006E74BE /* StocksAppTests */,
 				B598789F26025D5C006E74BE /* StocksAppUITests */,
 				B598787C26025D57006E74BE /* Products */,
+				B5F117E3261A6797005B544E /* StocksApp copy-Info.plist */,
 			);
 			sourceTree = "<group>";
 		};
@@ -159,6 +208,7 @@
 				B598787B26025D57006E74BE /* StocksApp.app */,
 				B598789126025D5C006E74BE /* StocksAppTests.xctest */,
 				B598789C26025D5C006E74BE /* StocksAppUITests.xctest */,
+				B5F117E2261A6797005B544E /* StocksAppOffline.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -172,6 +222,8 @@
 				B598795426066A20006E74BE /* Common */,
 				B59878D126026159006E74BE /* Scenes */,
 				B5F117092613AA85005B544E /* Workers */,
+				B5F11804261A6D6A005B544E /* CompanyProfileOfflineData.json */,
+				B5F1180B261A6E33005B544E /* QuoteOfflineData.json */,
 			);
 			path = StocksApp;
 			sourceTree = "<group>";
@@ -261,6 +313,7 @@
 			children = (
 				B5F117712618BBDD005B544E /* CGPoint.swift */,
 				B5F117B32619D8F2005B544E /* UIPanGestureRecognizer+projectedLocation.swift */,
+				B5F1181A261A6F1C005B544E /* Bundle+decode.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -356,6 +409,27 @@
 			productReference = B598789C26025D5C006E74BE /* StocksAppUITests.xctest */;
 			productType = "com.apple.product-type.bundle.ui-testing";
 		};
+		B5F117BC261A6797005B544E /* StocksAppOffline */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = B5F117DF261A6797005B544E /* Build configuration list for PBXNativeTarget "StocksAppOffline" */;
+			buildPhases = (
+				B5F117BF261A6797005B544E /* ShellScript */,
+				B5F117C0261A6797005B544E /* Sources */,
+				B5F117DA261A6797005B544E /* Frameworks */,
+				B5F117DC261A6797005B544E /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = StocksAppOffline;
+			packageProductDependencies = (
+				B5F117BD261A6797005B544E /* Kingfisher */,
+			);
+			productName = StocksApp;
+			productReference = B5F117E2261A6797005B544E /* StocksAppOffline.app */;
+			productType = "com.apple.product-type.application";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -395,6 +469,7 @@
 			projectRoot = "";
 			targets = (
 				B598787A26025D57006E74BE /* StocksApp */,
+				B5F117BC261A6797005B544E /* StocksAppOffline */,
 				B598789026025D5C006E74BE /* StocksAppTests */,
 				B598789B26025D5C006E74BE /* StocksAppUITests */,
 			);
@@ -415,6 +490,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B5F11806261A6D6A005B544E /* CompanyProfileOfflineData.json in Resources */,
+				B5F1180D261A6E33005B544E /* QuoteOfflineData.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -425,10 +502,38 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		B5F117DC261A6797005B544E /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				B5F117DD261A6797005B544E /* LaunchScreen.storyboard in Resources */,
+				B5F11805261A6D6A005B544E /* CompanyProfileOfflineData.json in Resources */,
+				B5F117DE261A6797005B544E /* Assets.xcassets in Resources */,
+				B5F1180C261A6E33005B544E /* QuoteOfflineData.json in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
 		B598796A260E2544006E74BE /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "if which swiftlint >/dev/null; then\n  swiftlint\nelse\n  echo \"warning: SwiftLint not installed, download from https://github.com/realm/SwiftLint\"\nfi\n";
+		};
+		B5F117BF261A6797005B544E /* ShellScript */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -455,6 +560,7 @@
 				B52DE07626125F0C00071CE3 /* DetailsCell.swift in Sources */,
 				B598787F26025D57006E74BE /* AppDelegate.swift in Sources */,
 				B5F117692618B073005B544E /* CartTransition.swift in Sources */,
+				B5F11825261A7341005B544E /* Bundle+decode.swift in Sources */,
 				B5F117B42619D8F2005B544E /* UIPanGestureRecognizer+projectedLocation.swift in Sources */,
 				B598788126025D57006E74BE /* SceneDelegate.swift in Sources */,
 				B598792C260665E0006E74BE /* StockListPresenter.swift in Sources */,
@@ -490,6 +596,7 @@
 				B5F117882618C4B7005B544E /* PresentationController.swift in Sources */,
 				B52DE07D2612658700071CE3 /* StocksAPIConfig.swift in Sources */,
 				B5F117552617BF23005B544E /* PriceChangeFormatter.swift in Sources */,
+				B5F1181C261A6F1C005B544E /* Bundle+decode.swift in Sources */,
 				B598795D2606867C006E74BE /* StockCell.swift in Sources */,
 				B5987937260665E1006E74BE /* StockListInteractor.swift in Sources */,
 				B5F117B52619D8F2005B544E /* UIPanGestureRecognizer+projectedLocation.swift in Sources */,
@@ -516,6 +623,39 @@
 			buildActionMask = 2147483647;
 			files = (
 				B59878A126025D5C006E74BE /* StocksAppUITests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		B5F117C0261A6797005B544E /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				B5F117C1261A6797005B544E /* DetailsCell.swift in Sources */,
+				B5F1181B261A6F1C005B544E /* Bundle+decode.swift in Sources */,
+				B5F117C2261A6797005B544E /* AppDelegate.swift in Sources */,
+				B5F117C3261A6797005B544E /* CartTransition.swift in Sources */,
+				B5F117C4261A6797005B544E /* UIPanGestureRecognizer+projectedLocation.swift in Sources */,
+				B5F117C5261A6797005B544E /* SceneDelegate.swift in Sources */,
+				B5F117C6261A6797005B544E /* StockListPresenter.swift in Sources */,
+				B5F117C7261A6797005B544E /* StockListWorker.swift in Sources */,
+				B5F117C8261A6797005B544E /* StockListModels.swift in Sources */,
+				B5F117C9261A6797005B544E /* StockModel.swift in Sources */,
+				B5F117CA261A6797005B544E /* DetailsViewController.swift in Sources */,
+				B5F117CB261A6797005B544E /* StockAPIWorker.swift in Sources */,
+				B5F117CC261A6797005B544E /* StockResponseModels.swift in Sources */,
+				B5F117CD261A6797005B544E /* UserDefaultsManager.swift in Sources */,
+				B5F117CE261A6797005B544E /* UIPriceChangeLabel.swift in Sources */,
+				B5F117CF261A6797005B544E /* StockListInteractor.swift in Sources */,
+				B5F117D0261A6797005B544E /* PriceChangeFormatter.swift in Sources */,
+				B5F117D1261A6797005B544E /* StockListRouter.swift in Sources */,
+				B5F117D2261A6797005B544E /* CGPoint.swift in Sources */,
+				B5F117D3261A6797005B544E /* PresentDismissAnimations.swift in Sources */,
+				B5F117D4261A6797005B544E /* StocksAPIConfig.swift in Sources */,
+				B5F117D5261A6797005B544E /* TransitionDriver.swift in Sources */,
+				B5F117D6261A6797005B544E /* PresentationControllerWithAnimations.swift in Sources */,
+				B5F117D7261A6797005B544E /* PresentationController.swift in Sources */,
+				B5F117D8261A6797005B544E /* StockListViewController.swift in Sources */,
+				B5F117D9261A6797005B544E /* StockCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -784,6 +924,46 @@
 			};
 			name = Release;
 		};
+		B5F117E0261A6797005B544E /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = X3C4UMBA4P;
+				INFOPLIST_FILE = "StocksApp copy-Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				OTHER_SWIFT_FLAGS = "-D OFFLINE";
+				PRODUCT_BUNDLE_IDENTIFIER = koryakin.StocksAppOffline;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 1;
+			};
+			name = Debug;
+		};
+		B5F117E1261A6797005B544E /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = X3C4UMBA4P;
+				INFOPLIST_FILE = "StocksApp copy-Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = koryakin.StocksAppOffline;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 1;
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -823,10 +1003,27 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
+		B5F117DF261A6797005B544E /* Build configuration list for PBXNativeTarget "StocksAppOffline" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				B5F117E0261A6797005B544E /* Debug */,
+				B5F117E1261A6797005B544E /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
 		B5F1172F26165AFF005B544E /* XCRemoteSwiftPackageReference "Kingfisher" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/onevcat/Kingfisher.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 6.2.1;
+			};
+		};
+		B5F117BE261A6797005B544E /* XCRemoteSwiftPackageReference "Kingfisher" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/onevcat/Kingfisher.git";
 			requirement = {
@@ -840,6 +1037,11 @@
 		B5F1173026165AFF005B544E /* Kingfisher */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = B5F1172F26165AFF005B544E /* XCRemoteSwiftPackageReference "Kingfisher" */;
+			productName = Kingfisher;
+		};
+		B5F117BD261A6797005B544E /* Kingfisher */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = B5F117BE261A6797005B544E /* XCRemoteSwiftPackageReference "Kingfisher" */;
 			productName = Kingfisher;
 		};
 /* End XCSwiftPackageProductDependency section */

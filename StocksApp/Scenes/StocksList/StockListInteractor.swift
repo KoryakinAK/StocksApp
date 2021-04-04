@@ -13,6 +13,7 @@
 import UIKit
 
 protocol StockListBusinessLogic {
+    func loadBundleStockData()
     func downloadStockDataFor(ticker: String)
     func setFavouriteStatusFor(ticker: String, to value: Bool)
     func getCurrentFavouriteStatusFor(ticker: String) -> Bool
@@ -38,53 +39,54 @@ class StockListInteractor: StockListBusinessLogic, StockListDataStore {
         }
     }
 
-    func downloadStockDataFor(ticker: String) {
-        var resultShit: CompanyProfile!
-        var resultMeme: Quote!
-//        let lol = Stock(ticker: "TSLA", name: "Tesla", currentPrice: 840.32, openPrice: 830.1, isFaved: false, country: "US", marketCapitalization: 48381242.12, finnhubIndustry: "Tachki")
-//        self.presenter?.presentLoadedStocksData(response: lol)
+    func loadBundleStockData() {
+        let companyProfilesArray = Bundle.main.decode([CompanyProfile].self, from: "CompanyProfileOfflineData.json")
+        let quoteArray = Bundle.main.decode([Quote].self, from: "QuoteOfflineData.json")
+        for index in 0..<min(companyProfilesArray.count, quoteArray.count) {
+            let stock = Stock(quote: quoteArray[index], companyProfile: companyProfilesArray[index])
+            self.presenter?.presentLoadedStocksData(response: stock)
+        }
+    }
 
+    func downloadStockDataFor(ticker: String) {
         DispatchQueue.global(qos: .userInitiated).async {
-            let APICallsDispatGroup = DispatchGroup()
-            APICallsDispatGroup.enter()
+            var companyResult: CompanyProfile!
+            var quoteResult: Quote!
+            let APICallsDispatchGroup = DispatchGroup()
+            var didFailToLoad: Bool = false
+            APICallsDispatchGroup.enter()
             StockAPIWorker.requestQuote(endpoint: StocksAPI.getCompanyProfile(ticker: ticker)) { (result: Result<CompanyProfile, Error>)  in
                 switch result {
                 case .success(let response):
-                    resultShit = response
-                    APICallsDispatGroup.leave()
-                //                        self.presenter?.presentLoadedStocksData(response: Stock(quote: Quote(c: 100, h: 100, l: 100, o: 100, pc: 100, t: 100), companyProfile: response))
+                    companyResult = response
+                    APICallsDispatchGroup.leave()
                 case .failure(let error):
-                    //                        APICallsDispatGroup.leave()
+                    didFailToLoad = true
+                    APICallsDispatchGroup.leave()
                     // TODO: Уведомить пользователя об ошибке получения данных
                     break
                 }
             }
-            APICallsDispatGroup.enter()
+            APICallsDispatchGroup.enter()
             StockAPIWorker.requestQuote(endpoint: StocksAPI.getQuote(ticker: ticker)) { (result: Result<Quote, Error>)  in
-                        switch result {
-                        case .success(let response):
-                            resultMeme = response
-                            APICallsDispatGroup.leave()
-                        case .failure(let error):
-                            break
-                        }
-                    }
-            APICallsDispatGroup.wait()
+                switch result {
+                case .success(let response):
+                    quoteResult = response
+                    APICallsDispatchGroup.leave()
+                case .failure(let error):
+                    didFailToLoad = true
+                    APICallsDispatchGroup.leave()
+                    break
+                }
+            }
+            APICallsDispatchGroup.wait()
             DispatchQueue.main.async {
-                self.presenter?.presentLoadedStocksData(response: Stock(quote: resultMeme, companyProfile: resultShit))
+                if didFailToLoad {
+                    // TODO: -Ошибка загрузки
+                } else {
+                    self.presenter?.presentLoadedStocksData(response: Stock(quote: quoteResult, companyProfile: companyResult))
+                }
             }
         }
-//        StockAPIWorker.requestQuote(endpoint: StocksAPI.getQuote(ticker: ticker)) { (result: Result<Quote, Error>)  in
-//            switch result {
-//            case .success(let response):
-//                self.presenter?.presentLoadedStocksData(response: Stock(quote: response, ticker: ticker))
-//            case .failure(let error):
-//                break
-//            }
-//        }
-
-        //        if let quoteResponse = quoteResponse, let companyProfileResponse = companyProfileResponse {
-        //                self.presenter.sendToViewController(data: response)
-
     }
 }

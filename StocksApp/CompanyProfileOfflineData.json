@@ -1,0 +1,58 @@
+[
+    {
+        "country": "US",
+        "currency": "USD",
+        "exchange": "NASDAQ NMS - GLOBAL MARKET",
+        "finnhubIndustry": "Technology",
+        "ipo": "1980-12-12",
+        "logo": "https://finnhub.io/api/logo?symbol=AAPL",
+        "marketCapitalization": 2064936,
+        "name": "Apple Inc",
+        "phone": "14089961010.0",
+        "shareOutstanding": 16788.096,
+        "ticker": "AAPL",
+        "weburl": "https://www.apple.com/"
+    },
+    {
+        "country": "US",
+        "currency": "USD",
+        "exchange": "NASDAQ NMS - GLOBAL MARKET",
+        "finnhubIndustry": "Automobiles",
+        "ipo": "2010-06-29",
+        "logo": "https://finnhub.io/api/logo?symbol=TSLA",
+        "marketCapitalization": 635183.1,
+        "name": "Tesla Inc",
+        "phone": "16506815000.0",
+        "shareOutstanding": 959.853504,
+        "ticker": "TSLA",
+        "weburl": "https://www.tesla.com/"
+    },
+    {
+        "country": "US",
+        "currency": "USD",
+        "exchange": "NASDAQ NMS - GLOBAL MARKET",
+        "finnhubIndustry": "Retail",
+        "ipo": "1997-05-15",
+        "logo": "https://finnhub.io/api/logo?symbol=AMZN",
+        "marketCapitalization": 1591768,
+        "name": "Amazon.com Inc",
+        "phone": "12062661000.0",
+        "shareOutstanding": 503.564743,
+        "ticker": "AMZN",
+        "weburl": "http://www.amazon.com/"
+    },
+    {
+        "country": "US",
+        "currency": "USD",
+        "exchange": "NEW YORK STOCK EXCHANGE, INC.",
+        "finnhubIndustry": "Technology",
+        "ipo": "2020-09-30",
+        "logo": "https://finnhub.io/api/logo?symbol=PLTR",
+        "marketCapitalization": 42039.71,
+        "name": "Palantir Technologies Inc",
+        "phone": "17203583679.0",
+        "shareOutstanding": 1792.139544,
+        "ticker": "PLTR",
+        "weburl": "https://www.palantir.com/"
+    }
+]

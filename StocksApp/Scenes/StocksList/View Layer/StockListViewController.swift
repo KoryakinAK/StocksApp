@@ -25,8 +25,8 @@ class StockListViewController: UIViewController, StockListDisplayLogic, UISearch
     var stockListTableView: UITableView!
     var dataSource = [Stock]()
     var filteredDataSource = [Stock]()
-    var hardcodedStocksList = ["AAPL", "TSLA", "MSFT", "PLTR", "AMZN", "GOOG", "ABC", "RMD", "VTR"]
-//        var hardcodedStocksList = ["TSLA"]
+//    var hardcodedStocksList = ["AAPL", "TSLA", "MSFT", "PLTR", "AMZN", "GOOG", "ABC", "RMD", "VTR"]
+        var hardcodedStocksList = ["TSLA"]
     var isShowingOnlyFavourites = false
     enum StockFavState: String, CaseIterable {
         case all = "Все акции"
@@ -180,7 +180,11 @@ class StockListViewController: UIViewController, StockListDisplayLogic, UISearch
 
     // MARK: - Interactor calls
     func startDownloadingData() {
+        #if OFFLINE
+        interactor?.loadBundleStockData()
+        #else
         hardcodedStocksList.forEach { interactor?.downloadStockDataFor(ticker: $0) }
+        #endif
     }
 
     // MARK: - Presenter functions

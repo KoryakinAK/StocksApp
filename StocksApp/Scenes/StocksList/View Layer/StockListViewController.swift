@@ -19,9 +19,8 @@ protocol StockListDisplayLogic: class {
 
 class StockListViewController: UIViewController, StockListDisplayLogic, UISearchResultsUpdating, UISearchBarDelegate {
 
-    var interactor: StockListBusinessLogic?
+    var interactor: StockListBusinessLogic!
     var router: (NSObjectProtocol & StockListRoutingLogic & StockListDataPassing)?
-    private let cartTransition = CartTransition()
 
     var stockListTableView: UITableView!
     var dataSource = [Stock]()
@@ -57,8 +56,6 @@ class StockListViewController: UIViewController, StockListDisplayLogic, UISearch
     var nextDetailsState: DetailsState {
         return detailsVisible ? .collapsed : .expanded
     }
-    var detailsViewHeight: CGFloat = 600
-    var detailsViewHandleHeight: CGFloat = 120
 
     var visualEffectView = UIVisualEffectView()
     var runningAnimations = [UIViewPropertyAnimator]()
@@ -68,27 +65,10 @@ class StockListViewController: UIViewController, StockListDisplayLogic, UISearch
 
     override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?) {
         super.init(nibName: nibNameOrNil, bundle: nibBundleOrNil)
-        setup()
     }
 
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
-    }
-
-    // MARK: Setup
-    private func setup() {
-        let viewController = self
-        detailsViewController = DetailsViewController()
-        let interactor = StockListInteractor()
-        let presenter = StockListPresenter()
-        let router = StockListRouter()
-        viewController.interactor = interactor
-        viewController.router = router
-        interactor.presenter = presenter
-        presenter.viewController = viewController
-        presenter.detailsVC = detailsViewController
-        router.viewController = viewController
-        router.dataStore = interactor
     }
 
     // MARK: Routing
@@ -111,7 +91,6 @@ class StockListViewController: UIViewController, StockListDisplayLogic, UISearch
         self.view.backgroundColor = .systemBackground
         setupTableView()
         setupNavigationItem()
-        setupDetailsVCWithTransition()
         setupSearchController()
         startDownloadingData()
     }
@@ -147,8 +126,9 @@ class StockListViewController: UIViewController, StockListDisplayLogic, UISearch
         filteredDataSource = dataSource.filter { stock in
             let scopeMatch = (scope == .all || (self.interactor?.getCurrentFavouriteStatusFor(ticker: stock.ticker) ?? false))
             if searchController.searchBar.text != "" {
-                let searchTextMatch = stock.ticker.uppercased().contains(searchText.uppercased())
-                return scopeMatch && searchTextMatch
+                let tickerTextMatch =  stock.ticker.uppercased().contains(searchText.uppercased())
+                let companyNameTextMatch = stock.name.uppercased().contains(searchText.uppercased())
+                return scopeMatch && (tickerTextMatch || companyNameTextMatch)
             } else {
                 return scopeMatch
             }
@@ -178,11 +158,6 @@ class StockListViewController: UIViewController, StockListDisplayLogic, UISearch
         navigationController?.navigationBar.prefersLargeTitles = true
         navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Избранное", style: .plain, target: self, action: #selector(handleFavSelectorTap))
         navigationItem.leftBarButtonItem = UIBarButtonItem(title: "Обновить", style: .plain, target: self, action: #selector(attemptDataUpdate))
-    }
-
-    func setupDetailsVCWithTransition() {
-        detailsViewController.transitioningDelegate = cartTransition
-        detailsViewController.modalPresentationStyle = .custom
     }
 
     // MARK: - Navigation Bar buttons

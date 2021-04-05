@@ -8,14 +8,17 @@
 import UIKit
 
 class StockAPIWorker {
-    class func requestQuote<T: Codable>(endpoint: Endpoint, completion: @escaping (Result<T, Error>) -> Void) {
+    class func createURLComponents(endpoint: Endpoint) -> URLComponents {
         var components = URLComponents()
         components.scheme = "https"
         components.host = endpoint.baseURL
         components.path = endpoint.path
         components.queryItems = [endpoint.parameters, endpoint.token]
+        return components
+    }
 
-        guard let url = components.url else { return }
+    class func requestQuote<T: Codable>(endpoint: Endpoint, completion: @escaping (Result<T, Error>) -> Void) {
+        guard let url = createURLComponents(endpoint: endpoint).url else { return }
 
         var urlRequest = URLRequest(url: url)
         urlRequest.httpMethod = "GET"

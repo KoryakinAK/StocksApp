@@ -14,7 +14,7 @@ class PresentationControllerWithAnimations: PresentationController {
         containerView?.insertSubview(blurView, at: 0)
 
         performAlongsideTransitionIfPossible { [unowned self] in
-            presentingViewController.view.transform = CGAffineTransform(scaleX: 0.81, y: 0.81)
+            presentingViewController.view.transform = CGAffineTransform(scaleX: 0.76, y: 0.76)
             self.blurView.effect = UIBlurEffect(style: .dark)
         }
     }

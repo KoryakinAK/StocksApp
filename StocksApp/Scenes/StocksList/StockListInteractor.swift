@@ -34,10 +34,8 @@ class StockListInteractor: StockListBusinessLogic, StockListDataStore {
 
     var dataSource = [Stock]()
     var dataSourceFavourites: [Stock] {
-        get {
-            return dataSource.filter { stock in
-                self.getCurrentFavouriteStatusFor(ticker: stock.ticker) ?? false
-            }
+        return dataSource.filter { stock in
+            self.getCurrentFavouriteStatusFor(ticker: stock.ticker)
         }
     }
     var filteredDataSource = [Stock]()

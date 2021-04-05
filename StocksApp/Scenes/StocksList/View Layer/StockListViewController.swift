@@ -151,7 +151,9 @@ class StockListViewController: UIViewController, StockListDisplayLogic, UISearch
 
         }
         isShowingOnlyFavourites = !isShowingOnlyFavourites
-        stockListTableView.reloadData()
+        UIView.transition(with: stockListTableView, duration: 0.21, options: .transitionCrossDissolve, animations: {
+            self.stockListTableView.reloadData()
+})
     }
 
     func updateFavSelectorToMatchFavState() {

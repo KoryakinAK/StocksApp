@@ -8,12 +8,11 @@
 import Foundation
 
 struct Stock: Hashable, Codable {
-    internal init(ticker: String, name: String, currentPrice: Float, openPrice: Float, isFaved: Bool, country: String, marketCapitalization: Float, finnhubIndustry: String) {
+    internal init(ticker: String, name: String, currentPrice: Float, openPrice: Float, country: String, marketCapitalization: Float, finnhubIndustry: String) {
         self.ticker = ticker
         self.name = name
         self.currentPrice = currentPrice
         self.openPrice = openPrice
-        self.isFaved = isFaved
         self.country = country
         self.marketCapitalization = marketCapitalization
         self.finnhubIndustry = finnhubIndustry
@@ -23,7 +22,6 @@ struct Stock: Hashable, Codable {
     let name: String
     let currentPrice: Float
     let openPrice: Float
-    var isFaved: Bool
     let country: String
     let marketCapitalization: Float
     let finnhubIndustry: String
@@ -36,6 +34,5 @@ struct Stock: Hashable, Codable {
         self.country = companyProfile.country
         self.marketCapitalization = companyProfile.marketCapitalization
         self.finnhubIndustry = companyProfile.finnhubIndustry
-        self.isFaved = false
     }
 }

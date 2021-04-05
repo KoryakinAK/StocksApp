@@ -9,14 +9,14 @@ import UIKit
 
 protocol DetailsDisplayLogic: class {
     var handlingArea: UIView { get }
-    var selectedStock: Stock! { get set }
+    var selectedStock: Stock { get set }
     func displaySelected(stock: Stock)
 }
 
 class DetailsViewController: UIViewController, DetailsDisplayLogic {
     let handlingArea = UIView()
     var stockInfoTableView = UITableView(frame: .zero, style: .grouped)
-    var selectedStock: Stock! {
+    var selectedStock = Stock(ticker: "", name: "", currentPrice: 0.00, openPrice: 0.00, country: "", marketCapitalization: 0.00, finnhubIndustry: "") {
         willSet {
             values[0] = newValue.name
             values[1] = newValue.ticker
@@ -44,11 +44,6 @@ class DetailsViewController: UIViewController, DetailsDisplayLogic {
         view.self.backgroundColor = .systemBackground
         setHandlingArea()
         setStockInfoTableView()
-        setStockPlaceHolder()
-    }
-
-    func setStockPlaceHolder() {
-        self.selectedStock = Stock(ticker: "", name: "", currentPrice: 0.00, openPrice: 0.00, isFaved: false, country: "", marketCapitalization: 0.00, finnhubIndustry: "")
     }
 
     func setStockInfoTableView() {

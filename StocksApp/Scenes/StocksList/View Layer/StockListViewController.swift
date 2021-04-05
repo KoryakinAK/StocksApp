@@ -25,6 +25,14 @@ class StockListViewController: UIViewController, StockListDisplayLogic, UISearch
 
     var stockListTableView: UITableView!
     var dataSource = [Stock]()
+    var dataSourceFavourites: [Stock] {
+        get {
+            return dataSource.filter { stock in
+                interactor?.getCurrentFavouriteStatusFor(ticker: stock.ticker) ?? false
+            }
+        }
+    }
+
     var filteredDataSource = [Stock]()
     //    var hardcodedStocksList = ["AAPL", "TSLA", "MSFT", "PLTR", "AMZN", "GOOG", "ABC", "RMD", "VTR"]
     var hardcodedStocksList = ["TSLA"]
@@ -125,12 +133,19 @@ class StockListViewController: UIViewController, StockListDisplayLogic, UISearch
         let scopeTextValue = searchBar.scopeButtonTitles![searchBar.selectedScopeButtonIndex]
         let scope = scopeTextValue == StockFavState.all.rawValue ? StockFavState.all : StockFavState.faved
         let searchText = searchBar.text!
+        switch scope {
+        case .all:
+            isShowingOnlyFavourites = false
+            self.stockListTableView.reloadData()
+        case .faved:
+            isShowingOnlyFavourites = true
+        }
         filterForSearchTextAndScope(searchText: searchText, scope: scope)
     }
 
     func filterForSearchTextAndScope(searchText: String, scope: StockFavState) {
         filteredDataSource = dataSource.filter { stock in
-            let scopeMatch = (scope == .all || stock.isFaved )
+            let scopeMatch = (scope == .all || (self.interactor?.getCurrentFavouriteStatusFor(ticker: stock.ticker) ?? false))
             if searchController.searchBar.text != "" {
                 let searchTextMatch = stock.ticker.uppercased().contains(searchText.uppercased())
                 return scopeMatch && searchTextMatch
@@ -174,9 +189,10 @@ class StockListViewController: UIViewController, StockListDisplayLogic, UISearch
     @objc func handleFavSelectorTap(sender: UIBarButtonItem) {
         switch isShowingOnlyFavourites {
         case true:
-            sender.title = "Избранное"
+            sender.title = StockFavState.faved.rawValue
         case false:
-            sender.title = "Все акции"
+            sender.title = StockFavState.all.rawValue
+
         }
         isShowingOnlyFavourites = !isShowingOnlyFavourites
         stockListTableView.reloadData()
@@ -213,21 +229,24 @@ class StockListViewController: UIViewController, StockListDisplayLogic, UISearch
 // MARK: - StockTableView Protocol Conformance
 extension StockListViewController: UITableViewDataSource, UITableViewDelegate {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        if searchController.isActive {
-            return filteredDataSource.count
-        }
-        return dataSource.count
+        guard !searchController.isActive else { return filteredDataSource.count }
+        guard isShowingOnlyFavourites else { return dataSource.count}
+        return dataSourceFavourites.count
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: StockCell.reuseIdentifier, for: indexPath) as? StockCell else {
             fatalError()
         }
-        if searchController.isActive {
+        guard !searchController.isActive else {
             cell.configure(with: filteredDataSource[indexPath.row])
-        } else {
-            cell.configure(with: dataSource[indexPath.row])
+            return cell
         }
+        guard isShowingOnlyFavourites else {
+            cell.configure(with: dataSource[indexPath.row])
+            return cell
+        }
+        cell.configure(with: dataSourceFavourites[indexPath.row])
         return cell
     }
 
@@ -249,24 +268,44 @@ extension StockListViewController: UITableViewDataSource, UITableViewDelegate {
     }
 
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        switch searchController.searchBar.selectedScopeButtonIndex {
-        case 1: // Избранное
-            interactor?.sendToDetailsVC(stock: filteredDataSource[indexPath.row])
-        default: // Все акции
-            interactor?.sendToDetailsVC(stock: dataSource[indexPath.row])
+        defer {
+            present(detailsViewController, animated: true)
         }
-        present(detailsViewController, animated: true)
+        guard isShowingOnlyFavourites else {
+            interactor?.sendToDetailsVC(stock: dataSource[indexPath.row])
+            return
+        }
+        guard searchController.isActive else {
+            interactor?.sendToDetailsVC(stock: filteredDataSource[indexPath.row])
+            return
+        }
+        interactor?.sendToDetailsVC(stock: dataSourceFavourites[indexPath.row])
     }
 
     // MARK: - Swipe Actions in TableViewCell
     func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
 
         let action = UIContextualAction(style: .normal, title: "Fav") { (action, view, completionHanlder) in
-            let stock = self.dataSource[indexPath.row]
-            if let currentFavStatus = self.interactor?.getCurrentFavouriteStatusFor(ticker: stock.ticker) {
+            var stock: Stock!
+            // TODO: - Функция-хелпер, сокращяющая дублирование кода
+            guard !self.searchController.isActive else {
+                stock = self.filteredDataSource[indexPath.row]
+                let currentFavStatus = self.interactor?.getCurrentFavouriteStatusFor(ticker: stock.ticker) ?? false
                 self.interactor?.setFavouriteStatusFor(ticker: stock.ticker, to: !currentFavStatus)
-                self.dataSource[indexPath.row].isFaved = !currentFavStatus
+                self.stockListTableView.reloadData()
+                return
             }
+
+            guard self.isShowingOnlyFavourites else {
+                stock = self.dataSource[indexPath.row]
+                let currentFavStatus = self.interactor?.getCurrentFavouriteStatusFor(ticker: stock.ticker) ?? false
+                self.interactor?.setFavouriteStatusFor(ticker: stock.ticker, to: !currentFavStatus)
+                return
+            }
+            stock = self.dataSourceFavourites[indexPath.row]
+            let currentFavStatus = self.interactor?.getCurrentFavouriteStatusFor(ticker: stock.ticker) ?? false
+            self.interactor?.setFavouriteStatusFor(ticker: stock.ticker, to: !currentFavStatus)
+            self.stockListTableView.reloadData()
             completionHanlder(true)
         }
 

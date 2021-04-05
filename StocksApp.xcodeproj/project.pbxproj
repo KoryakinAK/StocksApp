@@ -97,6 +97,8 @@
 		B5F11880261B55A0005B544E /* StockListBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5F11870261B54EC005B544E /* StockListBuilder.swift */; };
 		B5F11897261B8271005B544E /* UITableView+reloadDataWithDefaultAnimation.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5F11896261B8271005B544E /* UITableView+reloadDataWithDefaultAnimation.swift */; };
 		B5F1189C261B8277005B544E /* UITableView+reloadDataWithDefaultAnimation.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5F11896261B8271005B544E /* UITableView+reloadDataWithDefaultAnimation.swift */; };
+		B5F118A2261B9596005B544E /* StockAPITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5F118A1261B9596005B544E /* StockAPITests.swift */; };
+		B5F118A7261B9965005B544E /* UITableView+reloadDataWithDefaultAnimation.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5F11896261B8271005B544E /* UITableView+reloadDataWithDefaultAnimation.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -158,6 +160,7 @@
 		B5F11865261A8A98005B544E /* OfflineInfo.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = OfflineInfo.plist; sourceTree = "<group>"; };
 		B5F11870261B54EC005B544E /* StockListBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StockListBuilder.swift; sourceTree = "<group>"; };
 		B5F11896261B8271005B544E /* UITableView+reloadDataWithDefaultAnimation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITableView+reloadDataWithDefaultAnimation.swift"; sourceTree = "<group>"; };
+		B5F118A1261B9596005B544E /* StockAPITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StockAPITests.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -234,6 +237,7 @@
 			isa = PBXGroup;
 			children = (
 				B598789526025D5C006E74BE /* StocksAppTests.swift */,
+				B5F118A1261B9596005B544E /* StockAPITests.swift */,
 				B598789726025D5C006E74BE /* Info.plist */,
 			);
 			path = StocksAppTests;
@@ -604,6 +608,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B5F118A2261B9596005B544E /* StockAPITests.swift in Sources */,
 				B5F1170C2613AAD9005B544E /* StockAPIWorker.swift in Sources */,
 				B5F117822618C464005B544E /* PresentationControllerWithAnimations.swift in Sources */,
 				B5F117882618C4B7005B544E /* PresentationController.swift in Sources */,
@@ -620,6 +625,7 @@
 				B5987935260665E1006E74BE /* StockListViewController.swift in Sources */,
 				B5F1179E2618E4B8005B544E /* UserDefaultsManager.swift in Sources */,
 				B598789626025D5C006E74BE /* StocksAppTests.swift in Sources */,
+				B5F118A7261B9965005B544E /* UITableView+reloadDataWithDefaultAnimation.swift in Sources */,
 				B5F117732618BBDD005B544E /* CGPoint.swift in Sources */,
 				B5F1176A2618B073005B544E /* CartTransition.swift in Sources */,
 				B59879732610DFF6006E74BE /* DetailsViewController.swift in Sources */,

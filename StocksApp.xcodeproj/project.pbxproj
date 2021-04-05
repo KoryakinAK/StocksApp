@@ -92,6 +92,7 @@
 		B5F1181B261A6F1C005B544E /* Bundle+decode.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5F1181A261A6F1C005B544E /* Bundle+decode.swift */; };
 		B5F1181C261A6F1C005B544E /* Bundle+decode.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5F1181A261A6F1C005B544E /* Bundle+decode.swift */; };
 		B5F11825261A7341005B544E /* Bundle+decode.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5F1181A261A6F1C005B544E /* Bundle+decode.swift */; };
+		B5F11866261A8A99005B544E /* OfflineInfo.plist in Resources */ = {isa = PBXBuildFile; fileRef = B5F11865261A8A98005B544E /* OfflineInfo.plist */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -147,10 +148,10 @@
 		B5F1179C2618E4B8005B544E /* UserDefaultsManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultsManager.swift; sourceTree = "<group>"; };
 		B5F117B32619D8F2005B544E /* UIPanGestureRecognizer+projectedLocation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIPanGestureRecognizer+projectedLocation.swift"; sourceTree = "<group>"; };
 		B5F117E2261A6797005B544E /* StocksAppOffline.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = StocksAppOffline.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		B5F117E3261A6797005B544E /* StocksApp copy-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = "StocksApp copy-Info.plist"; path = "/Users/un/Documents/GitHub/StocksApp/StocksApp copy-Info.plist"; sourceTree = "<absolute>"; };
 		B5F11804261A6D6A005B544E /* CompanyProfileOfflineData.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = CompanyProfileOfflineData.json; sourceTree = "<group>"; };
 		B5F1180B261A6E33005B544E /* QuoteOfflineData.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = QuoteOfflineData.json; sourceTree = "<group>"; };
 		B5F1181A261A6F1C005B544E /* Bundle+decode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Bundle+decode.swift"; sourceTree = "<group>"; };
+		B5F11865261A8A98005B544E /* OfflineInfo.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = OfflineInfo.plist; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -194,7 +195,6 @@
 				B598789426025D5C006E74BE /* StocksAppTests */,
 				B598789F26025D5C006E74BE /* StocksAppUITests */,
 				B598787C26025D57006E74BE /* Products */,
-				B5F117E3261A6797005B544E /* StocksApp copy-Info.plist */,
 			);
 			sourceTree = "<group>";
 		};
@@ -339,6 +339,7 @@
 				B598787E26025D57006E74BE /* AppDelegate.swift */,
 				B598788026025D57006E74BE /* SceneDelegate.swift */,
 				B598788C26025D5B006E74BE /* Info.plist */,
+				B5F11865261A8A98005B544E /* OfflineInfo.plist */,
 				B598788926025D5B006E74BE /* LaunchScreen.storyboard */,
 			);
 			path = App;
@@ -504,6 +505,7 @@
 				B5F117DD261A6797005B544E /* LaunchScreen.storyboard in Resources */,
 				B5F11805261A6D6A005B544E /* CompanyProfileOfflineData.json in Resources */,
 				B5F117DE261A6797005B544E /* Assets.xcassets in Resources */,
+				B5F11866261A8A99005B544E /* OfflineInfo.plist in Resources */,
 				B5F1180C261A6E33005B544E /* QuoteOfflineData.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -923,7 +925,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = X3C4UMBA4P;
-				INFOPLIST_FILE = "StocksApp copy-Info.plist";
+				INFOPLIST_FILE = StocksApp/App/OfflineInfo.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -944,7 +946,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = X3C4UMBA4P;
-				INFOPLIST_FILE = "StocksApp copy-Info.plist";
+				INFOPLIST_FILE = StocksApp/App/OfflineInfo.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",

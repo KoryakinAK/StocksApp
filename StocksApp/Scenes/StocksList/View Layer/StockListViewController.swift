@@ -214,7 +214,7 @@ extension StockListViewController: UITableViewDataSource, UITableViewDelegate {
         if indexPath.row > lastAnimatedStockCell {
             cell.transform = CGAffineTransform(translationX: self.view.bounds.width / 2, y: 0)
             cell.alpha = 0
-            UIView.animate(withDuration: 5.3, delay: Double(indexPath.row) * 0.09, usingSpringWithDamping: 0.7, initialSpringVelocity: 11, options: .curveEaseInOut, animations: {
+            UIView.animate(withDuration: 1.3, delay: Double(indexPath.row) * 0.09, usingSpringWithDamping: 0.7, initialSpringVelocity: 11, options: .curveEaseInOut, animations: {
                 cell.transform = .identity
                 cell.alpha = 1
 

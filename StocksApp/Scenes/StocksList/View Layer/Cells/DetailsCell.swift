@@ -27,6 +27,11 @@ class DetailsCell: UITableViewCell {
 
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
+        self.valueLabel.adjustsFontSizeToFitWidth = true
+        self.columnLabel.adjustsFontSizeToFitWidth = true
+        self.valueLabel.minimumScaleFactor = 0.7
+        self.columnLabel.minimumScaleFactor = 0.7
+
         let allCellObjectsList: [UIView] = [valueLabel, columnLabel]
         allCellObjectsList.forEach {
             $0.translatesAutoresizingMaskIntoConstraints = false
@@ -36,14 +41,20 @@ class DetailsCell: UITableViewCell {
 
         // MARK: - Cell content autolayout
         NSLayoutConstraint.activate([
-            columnLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor),
+            columnLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 6),
             columnLabel.centerYAnchor.constraint(equalTo: contentView.centerYAnchor),
             columnLabel.widthAnchor.constraint(equalTo: contentView.widthAnchor, multiplier: 0.5),
 
-            valueLabel.trailingAnchor.constraint(equalTo: contentView.trailingAnchor),
+            valueLabel.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -6),
             valueLabel.centerYAnchor.constraint(equalTo: contentView.centerYAnchor),
             valueLabel.widthAnchor.constraint(equalTo: contentView.widthAnchor, multiplier: 0.5)
         ])
+    }
+
+    // TODO: - Вынести функцию в extenstion к классу ячейки
+    private func formatCurrentPriceFor(price: Float) -> String {
+        let formattedValue = StockDataFormatter.priceFormatter().string(from: price as NSNumber)
+        return formattedValue ?? "0.0"
     }
 
     required init?(coder: NSCoder) {

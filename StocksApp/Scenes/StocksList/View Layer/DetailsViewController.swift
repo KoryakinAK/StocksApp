@@ -8,26 +8,34 @@
 import UIKit
 
 protocol DetailsDisplayLogic: class {
-    var handlingArea: UIView { get }
     var selectedStock: Stock { get set }
     func displaySelected(stock: Stock)
 }
 
 class DetailsViewController: UIViewController, DetailsDisplayLogic {
-    let handlingArea = UIView()
-    var stockInfoTableView = UITableView(frame: .zero, style: .grouped)
+    let stockInfoTableView = UITableView(frame: .zero, style: .grouped)
+    let stockNameLabel: UILabel = {
+        let label = UILabel()
+        label.translatesAutoresizingMaskIntoConstraints = false
+        label.textAlignment = .justified
+        label.font = UIFont.boldSystemFont(ofSize: 35)
+        label.numberOfLines = 0
+        label.backgroundColor = .clear
+        return label
+    }()
+    let stockNameBackground = UIImageView()
     var selectedStock = Stock(ticker: "", name: "", currentPrice: 0.00, openPrice: 0.00, country: "", marketCapitalization: 0.00, finnhubIndustry: "") {
         willSet {
-            values[0] = newValue.name
-            values[1] = newValue.ticker
-            values[2] = newValue.country
-            values[3] = String(newValue.marketCapitalization)
-            values[4] = newValue.finnhubIndustry
+            values[0] = newValue.ticker
+            values[1] = newValue.country
+            values[2] = String(newValue.marketCapitalization)
+            values[3] = newValue.finnhubIndustry
+            stockNameLabel.text = newValue.name
             self.stockInfoTableView.reloadData()
         }
     }
 
-    let titles = ["Имя", "Тикер", "Страна", "Капитализация", "Индустрия"]
+    let titles = ["Тикер", "Страна", "Капитализация", "Индустрия"]
     var values = [String].init(repeating: "-", count: 5)
 
     /* enum stockTableViewConfiguration: Int {
@@ -42,7 +50,7 @@ class DetailsViewController: UIViewController, DetailsDisplayLogic {
     override func viewDidLoad() {
         super.viewDidLoad()
         view.self.backgroundColor = .systemBackground
-        setHandlingArea()
+        setupView()
         setStockInfoTableView()
     }
 
@@ -51,7 +59,7 @@ class DetailsViewController: UIViewController, DetailsDisplayLogic {
         stockInfoTableView.dataSource = self
         stockInfoTableView.translatesAutoresizingMaskIntoConstraints = false
         view.addSubview(stockInfoTableView)
-        stockInfoTableView.topAnchor.constraint(equalTo: self.handlingArea.bottomAnchor).isActive = true
+        stockInfoTableView.topAnchor.constraint(equalTo: self.stockNameLabel.bottomAnchor).isActive = true
         stockInfoTableView.bottomAnchor.constraint(equalTo: self.view.bottomAnchor).isActive = true
         stockInfoTableView.leadingAnchor.constraint(equalTo: self.view.leadingAnchor).isActive = true
         stockInfoTableView.trailingAnchor.constraint(equalTo: self.view.trailingAnchor).isActive = true
@@ -62,16 +70,12 @@ class DetailsViewController: UIViewController, DetailsDisplayLogic {
         stockInfoTableView.isScrollEnabled = false
     }
 
-    func setHandlingArea() {
-        handlingArea.translatesAutoresizingMaskIntoConstraints = false
-        handlingArea.backgroundColor = .cyan
-        self.view.addSubview(handlingArea)
+    func setupView() {
+        self.view.addSubview(stockNameLabel)
         NSLayoutConstraint.activate([
-            handlingArea.topAnchor.constraint(equalTo: self.view.topAnchor),
-            handlingArea.leadingAnchor.constraint(equalTo: self.view.leadingAnchor),
-            handlingArea.trailingAnchor.constraint(equalTo: self.view.trailingAnchor),
-            handlingArea.heightAnchor.constraint(equalToConstant: 120)
-
+            stockNameLabel.topAnchor.constraint(equalTo: self.view.topAnchor, constant: 20),
+            stockNameLabel.leadingAnchor.constraint(equalTo: self.view.leadingAnchor, constant: 7),
+            stockNameLabel.trailingAnchor.constraint(equalTo: self.view.trailingAnchor, constant: 7)
         ])
     }
 
@@ -82,7 +86,7 @@ class DetailsViewController: UIViewController, DetailsDisplayLogic {
 
 extension DetailsViewController: UITableViewDataSource, UITableViewDelegate {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 5
+        return titles.count
     }
 
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {

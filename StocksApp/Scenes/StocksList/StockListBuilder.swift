@@ -15,10 +15,6 @@ struct StockListBuilder {
         let presenter = StockListPresenter()
         let router = StockListRouter()
 
-        let cartTransition = CartTransition()
-        detailsVC.transitioningDelegate = cartTransition
-        detailsVC.modalPresentationStyle = .custom
-
         mainVC.interactor = interactor
         mainVC.router = router
         mainVC.detailsViewController = detailsVC

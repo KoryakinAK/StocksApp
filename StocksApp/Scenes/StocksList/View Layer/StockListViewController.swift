@@ -21,6 +21,7 @@ class StockListViewController: UIViewController, StockListDisplayLogic, UISearch
     var detailsViewController: DetailsViewController!
     var interactor: (StockListBusinessLogic & StockListDataStore)!
     var router: (NSObjectProtocol & StockListRoutingLogic & StockListDataPassing)?
+    let cartTransition = CartTransition()
 
     var stockListTableView: UITableView!
 
@@ -63,9 +64,15 @@ class StockListViewController: UIViewController, StockListDisplayLogic, UISearch
         super.viewDidLoad()
         self.view.backgroundColor = .systemBackground
         setupTableView()
+        setupDetailsVCTransition()
         setupNavigationItem()
         setupSearchController()
         startDownloadingData()
+    }
+
+    func setupDetailsVCTransition() {
+        detailsViewController.transitioningDelegate = cartTransition
+        detailsViewController.modalPresentationStyle = .custom
     }
 
     // MARK: - Search Controller

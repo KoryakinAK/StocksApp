@@ -20,7 +20,11 @@ class StockAPIWorker {
         var urlRequest = URLRequest(url: url)
         urlRequest.httpMethod = "GET"
 
-        let session = URLSession(configuration: .default)
+        let configuration = URLSessionConfiguration.default
+        configuration.timeoutIntervalForRequest = 5.0
+        configuration.timeoutIntervalForResource = 5.0
+
+        let session = URLSession(configuration: configuration)
         let dataTask = session.dataTask(with: urlRequest) { data, response, error in
             guard error == nil else {
                 completion(.failure(error!))

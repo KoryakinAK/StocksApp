@@ -98,6 +98,7 @@ class StockListViewController: UIViewController, StockListDisplayLogic, UISearch
         case .faved:
             isShowingOnlyFavourites = true
         }
+        updateFavSelectorToMatchFavState()
         filterForSearchTextAndScope(searchText: searchText, scope: scope)
     }
 
@@ -151,6 +152,15 @@ class StockListViewController: UIViewController, StockListDisplayLogic, UISearch
         }
         isShowingOnlyFavourites = !isShowingOnlyFavourites
         stockListTableView.reloadData()
+    }
+
+    func updateFavSelectorToMatchFavState() {
+        switch isShowingOnlyFavourites {
+        case true:
+            navigationItem.rightBarButtonItem?.title  = StockFavState.all.rawValue
+        case false:
+            navigationItem.rightBarButtonItem?.title = StockFavState.faved.rawValue
+        }
     }
 
     @objc func attemptDataUpdate() {

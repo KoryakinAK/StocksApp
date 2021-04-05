@@ -139,6 +139,7 @@ class StockListViewController: UIViewController, StockListDisplayLogic, UISearch
         case true:
             sender.title = StockFavState.faved.rawValue
         case false:
+            searchController.searchBar.selectedScopeButtonIndex = 1
             sender.title = StockFavState.all.rawValue
 
         }

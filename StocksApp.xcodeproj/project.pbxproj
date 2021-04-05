@@ -276,10 +276,9 @@
 			isa = PBXGroup;
 			children = (
 				B5F117672618B04B005B544E /* Transition */,
+				B5F1187F261B5540005B544E /* Cells */,
 				B598792A260665E0006E74BE /* StockListViewController.swift */,
 				B59879712610DFF6006E74BE /* DetailsViewController.swift */,
-				B598795B2606867C006E74BE /* StockCell.swift */,
-				B52DE07526125F0C00071CE3 /* DetailsCell.swift */,
 			);
 			path = "View Layer";
 			sourceTree = "<group>";
@@ -343,6 +342,15 @@
 				B598788926025D5B006E74BE /* LaunchScreen.storyboard */,
 			);
 			path = App;
+			sourceTree = "<group>";
+		};
+		B5F1187F261B5540005B544E /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+				B598795B2606867C006E74BE /* StockCell.swift */,
+				B52DE07526125F0C00071CE3 /* DetailsCell.swift */,
+			);
+			path = Cells;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */

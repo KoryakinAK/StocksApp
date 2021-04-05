@@ -83,7 +83,6 @@ class StockListInteractor: StockListBusinessLogic, StockListDataStore {
                 case .failure(let error):
                     didFailToLoad = true
                     APICallsDispatchGroup.leave()
-                    // TODO: Уведомить пользователя об ошибке получения данных
                 }
             }
             APICallsDispatchGroup.enter()

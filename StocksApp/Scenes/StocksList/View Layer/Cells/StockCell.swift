@@ -86,7 +86,6 @@ class StockCell: UITableViewCell {
     }
 
     private func formatCurrentPriceFor(price: Float) -> String {
-        print(price)
         let formattedValue = StockDataFormatter.priceFormatter().string(from: price as NSNumber)
         return formattedValue ?? "0.0"
     }

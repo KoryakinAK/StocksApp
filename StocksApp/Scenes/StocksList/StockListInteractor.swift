@@ -22,16 +22,31 @@ protocol StockListBusinessLogic {
 
 protocol StockListDataStore {
     // var name: String { get set }
+    var dataSource: [Stock] { get set }
+    var dataSourceFavourites: [Stock] { get }
+    var filteredDataSource: [Stock] { get set }
+
 }
 
 class StockListInteractor: StockListBusinessLogic, StockListDataStore {
     var presenter: StockListPresentationLogic?
     var worker: StockListWorker?
 
+    var dataSource = [Stock]()
+    var dataSourceFavourites: [Stock] {
+        get {
+            return dataSource.filter { stock in
+                self.getCurrentFavouriteStatusFor(ticker: stock.ticker) ?? false
+            }
+        }
+    }
+    var filteredDataSource = [Stock]()
+
     func sendToDetailsVC(stock: Stock) {
         presenter?.presentToDetailsVC(stock: stock)
     }
 
+    // MARK: - Favourites interaction
     func getCurrentFavouriteStatusFor(ticker: String) -> Bool {
         return UserDefaultsManager.sharedInstance().checkIfFavouritesContain(ticker: ticker)
     }
@@ -44,6 +59,7 @@ class StockListInteractor: StockListBusinessLogic, StockListDataStore {
         }
     }
 
+    // MARK: - Stock data interaction
     func loadBundleStockData() {
         let companyProfilesArray = Bundle.main.decode([CompanyProfile].self, from: "CompanyProfileOfflineData.json")
         let quoteArray = Bundle.main.decode([Quote].self, from: "QuoteOfflineData.json")

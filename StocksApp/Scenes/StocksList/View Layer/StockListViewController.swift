@@ -25,7 +25,7 @@ class StockListViewController: UIViewController, StockListDisplayLogic, UISearch
 
     var stockListTableView: UITableView!
 
-    var hardcodedStocksList = ["AAPL", "TSLA", "MSFT", "PLTR", "AMZN", "GOOG", "ABC", "RMD"]
+    var hardcodedStocksList = ["AAPL", "TSLA", "MSFT", "PLTR", "AMZN", "C", "TXN", "QCOM"]
     var isShowingOnlyFavourites = false
     enum StockFavState: String, CaseIterable {
         case all = "Все акции"

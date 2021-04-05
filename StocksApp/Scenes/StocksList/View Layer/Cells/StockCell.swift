@@ -25,11 +25,11 @@ class StockCell: UITableViewCell {
         ticker.font = UIFont.boldSystemFont(ofSize: 30)
 
         name.text = stock.name
-        name.font = UIFont.systemFont(ofSize: 24)
+        name.font = UIFont.systemFont(ofSize: 23)
         name.textColor = .secondaryLabel
 
         currentPrice.text = formatCurrentPriceFor(price: stock.currentPrice)
-        currentPrice.font = UIFont.boldSystemFont(ofSize: 30)
+        currentPrice.font = UIFont.boldSystemFont(ofSize: 27)
 
         priceChange.text = formatPriceChangeFor(openPriceValue: stock.openPrice, currentPriceValue: stock.currentPrice)
         priceChange.font = UIFont.systemFont(ofSize: 24)
@@ -57,6 +57,8 @@ class StockCell: UITableViewCell {
         self.currentPrice.textAlignment = .right
         self.priceChange.textAlignment = .right
         self.name.textAlignment = .left
+        self.name.adjustsFontSizeToFitWidth = true
+        self.name.minimumScaleFactor = 0.74
         self.ticker.textAlignment = .left
 
         // MARK: - Cell content autolayout
@@ -66,22 +68,22 @@ class StockCell: UITableViewCell {
             logo.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -12),
             logo.widthAnchor.constraint(equalTo: logo.heightAnchor),
 
-            currentPrice.widthAnchor.constraint(equalTo: contentView.widthAnchor, multiplier: 0.30),
+            currentPrice.widthAnchor.constraint(equalTo: contentView.widthAnchor, multiplier: 0.28),
             currentPrice.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -8),
             currentPrice.bottomAnchor.constraint(equalTo: contentView.centerYAnchor),
 
             priceChange.topAnchor.constraint(equalTo: contentView.centerYAnchor),
             priceChange.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -8),
-            priceChange.widthAnchor.constraint(equalTo: currentPrice.widthAnchor),
+            priceChange.widthAnchor.constraint(equalTo: contentView.widthAnchor, multiplier: 0.23),
 
             name.topAnchor.constraint(equalTo: contentView.centerYAnchor),
             name.leadingAnchor.constraint(equalTo: logo.trailingAnchor, constant: 12),
-            name.trailingAnchor.constraint(equalTo: currentPrice.leadingAnchor, constant: -8),
+            name.trailingAnchor.constraint(equalTo: priceChange.leadingAnchor, constant: -8),
 //            name.bottomAnchor.constraint(equalTo: contentView.bottomAnchor),
 
             ticker.leadingAnchor.constraint(equalTo: logo.trailingAnchor, constant: 12),
             ticker.bottomAnchor.constraint(equalTo: contentView.centerYAnchor),
-            ticker.trailingAnchor.constraint(equalTo: name.trailingAnchor)
+            ticker.trailingAnchor.constraint(equalTo: currentPrice.leadingAnchor)
         ])
     }
 

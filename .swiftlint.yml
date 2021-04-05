@@ -1,6 +1,5 @@
 excluded:
-  - stolovka/AppDelegate.swift
-  - stolovka/SceneDelegate.swift
+  - StocksAppTests
 
 identifier_name:
   excluded:

@@ -95,6 +95,8 @@
 		B5F11866261A8A99005B544E /* OfflineInfo.plist in Resources */ = {isa = PBXBuildFile; fileRef = B5F11865261A8A98005B544E /* OfflineInfo.plist */; };
 		B5F11876261B54ED005B544E /* StockListBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5F11870261B54EC005B544E /* StockListBuilder.swift */; };
 		B5F11880261B55A0005B544E /* StockListBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5F11870261B54EC005B544E /* StockListBuilder.swift */; };
+		B5F11897261B8271005B544E /* UITableView+reloadDataWithDefaultAnimation.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5F11896261B8271005B544E /* UITableView+reloadDataWithDefaultAnimation.swift */; };
+		B5F1189C261B8277005B544E /* UITableView+reloadDataWithDefaultAnimation.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5F11896261B8271005B544E /* UITableView+reloadDataWithDefaultAnimation.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -155,6 +157,7 @@
 		B5F1181A261A6F1C005B544E /* Bundle+decode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Bundle+decode.swift"; sourceTree = "<group>"; };
 		B5F11865261A8A98005B544E /* OfflineInfo.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = OfflineInfo.plist; sourceTree = "<group>"; };
 		B5F11870261B54EC005B544E /* StockListBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StockListBuilder.swift; sourceTree = "<group>"; };
+		B5F11896261B8271005B544E /* UITableView+reloadDataWithDefaultAnimation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITableView+reloadDataWithDefaultAnimation.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -312,6 +315,7 @@
 				B5F117712618BBDD005B544E /* CGPoint.swift */,
 				B5F117B32619D8F2005B544E /* UIPanGestureRecognizer+projectedLocation.swift */,
 				B5F1181A261A6F1C005B544E /* Bundle+decode.swift */,
+				B5F11896261B8271005B544E /* UITableView+reloadDataWithDefaultAnimation.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -568,6 +572,7 @@
 			files = (
 				B52DE07626125F0C00071CE3 /* DetailsCell.swift in Sources */,
 				B598787F26025D57006E74BE /* AppDelegate.swift in Sources */,
+				B5F11897261B8271005B544E /* UITableView+reloadDataWithDefaultAnimation.swift in Sources */,
 				B5F11876261B54ED005B544E /* StockListBuilder.swift in Sources */,
 				B5F117692618B073005B544E /* CartTransition.swift in Sources */,
 				B5F11825261A7341005B544E /* Bundle+decode.swift in Sources */,
@@ -640,6 +645,7 @@
 			files = (
 				B5F117C1261A6797005B544E /* DetailsCell.swift in Sources */,
 				B5F1181B261A6F1C005B544E /* Bundle+decode.swift in Sources */,
+				B5F1189C261B8277005B544E /* UITableView+reloadDataWithDefaultAnimation.swift in Sources */,
 				B5F117C2261A6797005B544E /* AppDelegate.swift in Sources */,
 				B5F117C3261A6797005B544E /* CartTransition.swift in Sources */,
 				B5F117C4261A6797005B544E /* UIPanGestureRecognizer+projectedLocation.swift in Sources */,

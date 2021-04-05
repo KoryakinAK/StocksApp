@@ -94,7 +94,7 @@ class StockListViewController: UIViewController, StockListDisplayLogic, UISearch
         switch scope {
         case .all:
             isShowingOnlyFavourites = false
-            self.stockListTableView.reloadData()
+            self.stockListTableView.reloadDataWithDefaultAnimation()
         case .faved:
             isShowingOnlyFavourites = true
         }
@@ -113,7 +113,7 @@ class StockListViewController: UIViewController, StockListDisplayLogic, UISearch
                 return scopeMatch
             }
         }
-        stockListTableView.reloadData()
+        stockListTableView.reloadDataWithDefaultAnimation()
     }
 
     func setupTableView() {
@@ -151,9 +151,7 @@ class StockListViewController: UIViewController, StockListDisplayLogic, UISearch
 
         }
         isShowingOnlyFavourites = !isShowingOnlyFavourites
-        UIView.transition(with: stockListTableView, duration: 0.21, options: .transitionCrossDissolve, animations: {
-            self.stockListTableView.reloadData()
-})
+        stockListTableView.reloadDataWithDefaultAnimation()
     }
 
     func updateFavSelectorToMatchFavState() {
@@ -183,7 +181,7 @@ class StockListViewController: UIViewController, StockListDisplayLogic, UISearch
     // MARK: - Presenter functions
     func displayLoaded(stock: Stock) {
         self.interactor.dataSource.append(stock)
-        stockListTableView.reloadData()
+        stockListTableView.reloadDataWithDefaultAnimation()
     }
 
     func displayLoadingError() {
@@ -242,11 +240,14 @@ extension StockListViewController: UITableViewDataSource, UITableViewDelegate {
         let action = UIContextualAction(style: .normal, title: "Fav") { (action, view, completionHanlder) in
             var stock: Stock!
             // TODO: - Функция-хелпер, сокращяющая дублирование кода
+            // TODO: - Перестать каждый раз перезагружать все данные из-за одной ячейки
+            // TODO: - Анимация удаления ячейки вместо анимации перезагрузки данных
             guard !self.searchController.isActive else {
                 stock = self.interactor.filteredDataSource[indexPath.row]
                 let currentFavStatus = self.interactor?.getCurrentFavouriteStatusFor(ticker: stock.ticker) ?? false
                 self.interactor?.setFavouriteStatusFor(ticker: stock.ticker, to: !currentFavStatus)
-                self.stockListTableView.reloadData()
+                self.stockListTableView.reloadDataWithDefaultAnimation()
+                completionHanlder(true)
                 return
             }
 
@@ -254,12 +255,13 @@ extension StockListViewController: UITableViewDataSource, UITableViewDelegate {
                 stock = self.interactor.dataSource[indexPath.row]
                 let currentFavStatus = self.interactor?.getCurrentFavouriteStatusFor(ticker: stock.ticker) ?? false
                 self.interactor?.setFavouriteStatusFor(ticker: stock.ticker, to: !currentFavStatus)
+                completionHanlder(true)
                 return
             }
             stock = self.interactor.dataSourceFavourites[indexPath.row]
             let currentFavStatus = self.interactor?.getCurrentFavouriteStatusFor(ticker: stock.ticker) ?? false
             self.interactor?.setFavouriteStatusFor(ticker: stock.ticker, to: !currentFavStatus)
-            self.stockListTableView.reloadData()
+            self.stockListTableView.reloadDataWithDefaultAnimation()
             completionHanlder(true)
         }
 

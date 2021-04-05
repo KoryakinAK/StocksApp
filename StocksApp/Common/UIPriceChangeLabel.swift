@@ -13,7 +13,7 @@ class UIPriceChangeLabel: UILabel {
         willSet {
             guard
                 let newValue = newValue,
-                let priceChange = PriceChangeFormatter.sharedInstance().number(from: newValue)
+                let priceChange = StockDataFormatter.priceChangeFormatter().number(from: newValue)
             else {
                 return
             }

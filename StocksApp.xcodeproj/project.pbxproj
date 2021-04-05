@@ -40,8 +40,8 @@
 		B5F1173126165AFF005B544E /* Kingfisher in Frameworks */ = {isa = PBXBuildFile; productRef = B5F1173026165AFF005B544E /* Kingfisher */; };
 		B5F1174B2617BD39005B544E /* UIPriceChangeLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5F1174A2617BD39005B544E /* UIPriceChangeLabel.swift */; };
 		B5F1174C2617BD39005B544E /* UIPriceChangeLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5F1174A2617BD39005B544E /* UIPriceChangeLabel.swift */; };
-		B5F117542617BF23005B544E /* PriceChangeFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5F117532617BF23005B544E /* PriceChangeFormatter.swift */; };
-		B5F117552617BF23005B544E /* PriceChangeFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5F117532617BF23005B544E /* PriceChangeFormatter.swift */; };
+		B5F117542617BF23005B544E /* StockDataFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5F117532617BF23005B544E /* StockDataFormatter.swift */; };
+		B5F117552617BF23005B544E /* StockDataFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5F117532617BF23005B544E /* StockDataFormatter.swift */; };
 		B5F117692618B073005B544E /* CartTransition.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5F117682618B073005B544E /* CartTransition.swift */; };
 		B5F1176A2618B073005B544E /* CartTransition.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5F117682618B073005B544E /* CartTransition.swift */; };
 		B5F117722618BBDD005B544E /* CGPoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5F117712618BBDD005B544E /* CGPoint.swift */; };
@@ -72,7 +72,7 @@
 		B5F117CD261A6797005B544E /* UserDefaultsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5F1179C2618E4B8005B544E /* UserDefaultsManager.swift */; };
 		B5F117CE261A6797005B544E /* UIPriceChangeLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5F1174A2617BD39005B544E /* UIPriceChangeLabel.swift */; };
 		B5F117CF261A6797005B544E /* StockListInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = B598792B260665E0006E74BE /* StockListInteractor.swift */; };
-		B5F117D0261A6797005B544E /* PriceChangeFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5F117532617BF23005B544E /* PriceChangeFormatter.swift */; };
+		B5F117D0261A6797005B544E /* StockDataFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5F117532617BF23005B544E /* StockDataFormatter.swift */; };
 		B5F117D1261A6797005B544E /* StockListRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5987928260665E0006E74BE /* StockListRouter.swift */; };
 		B5F117D2261A6797005B544E /* CGPoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5F117712618BBDD005B544E /* CGPoint.swift */; };
 		B5F117D3261A6797005B544E /* PresentDismissAnimations.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5F1178C2618C4DB005B544E /* PresentDismissAnimations.swift */; };
@@ -140,7 +140,7 @@
 		B5F1170A2613AAD9005B544E /* StockAPIWorker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StockAPIWorker.swift; sourceTree = "<group>"; };
 		B5F117202613AB92005B544E /* StockResponseModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StockResponseModels.swift; sourceTree = "<group>"; };
 		B5F1174A2617BD39005B544E /* UIPriceChangeLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIPriceChangeLabel.swift; sourceTree = "<group>"; };
-		B5F117532617BF23005B544E /* PriceChangeFormatter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PriceChangeFormatter.swift; sourceTree = "<group>"; };
+		B5F117532617BF23005B544E /* StockDataFormatter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StockDataFormatter.swift; sourceTree = "<group>"; };
 		B5F117682618B073005B544E /* CartTransition.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CartTransition.swift; sourceTree = "<group>"; };
 		B5F117712618BBDD005B544E /* CGPoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CGPoint.swift; sourceTree = "<group>"; };
 		B5F1177A2618C06C005B544E /* TransitionDriver.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransitionDriver.swift; sourceTree = "<group>"; };
@@ -270,7 +270,7 @@
 			isa = PBXGroup;
 			children = (
 				B59879612606885E006E74BE /* StockModel.swift */,
-				B5F117532617BF23005B544E /* PriceChangeFormatter.swift */,
+				B5F117532617BF23005B544E /* StockDataFormatter.swift */,
 				B5F1174A2617BD39005B544E /* UIPriceChangeLabel.swift */,
 			);
 			path = Common;
@@ -582,7 +582,7 @@
 				B5F1179D2618E4B8005B544E /* UserDefaultsManager.swift in Sources */,
 				B5F1174B2617BD39005B544E /* UIPriceChangeLabel.swift in Sources */,
 				B5987936260665E1006E74BE /* StockListInteractor.swift in Sources */,
-				B5F117542617BF23005B544E /* PriceChangeFormatter.swift in Sources */,
+				B5F117542617BF23005B544E /* StockDataFormatter.swift in Sources */,
 				B5987930260665E0006E74BE /* StockListRouter.swift in Sources */,
 				B5F117722618BBDD005B544E /* CGPoint.swift in Sources */,
 				B5F1178D2618C4DB005B544E /* PresentDismissAnimations.swift in Sources */,
@@ -603,7 +603,7 @@
 				B5F117822618C464005B544E /* PresentationControllerWithAnimations.swift in Sources */,
 				B5F117882618C4B7005B544E /* PresentationController.swift in Sources */,
 				B52DE07D2612658700071CE3 /* StocksAPIConfig.swift in Sources */,
-				B5F117552617BF23005B544E /* PriceChangeFormatter.swift in Sources */,
+				B5F117552617BF23005B544E /* StockDataFormatter.swift in Sources */,
 				B5F1181C261A6F1C005B544E /* Bundle+decode.swift in Sources */,
 				B598795D2606867C006E74BE /* StockCell.swift in Sources */,
 				B5987937260665E1006E74BE /* StockListInteractor.swift in Sources */,
@@ -653,7 +653,7 @@
 				B5F117CD261A6797005B544E /* UserDefaultsManager.swift in Sources */,
 				B5F117CE261A6797005B544E /* UIPriceChangeLabel.swift in Sources */,
 				B5F117CF261A6797005B544E /* StockListInteractor.swift in Sources */,
-				B5F117D0261A6797005B544E /* PriceChangeFormatter.swift in Sources */,
+				B5F117D0261A6797005B544E /* StockDataFormatter.swift in Sources */,
 				B5F117D1261A6797005B544E /* StockListRouter.swift in Sources */,
 				B5F117D2261A6797005B544E /* CGPoint.swift in Sources */,
 				B5F117D3261A6797005B544E /* PresentDismissAnimations.swift in Sources */,

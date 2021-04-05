@@ -28,7 +28,7 @@ class StockCell: UITableViewCell {
         name.font = UIFont.systemFont(ofSize: 24)
         name.textColor = .secondaryLabel
 
-        currentPrice.text = "\(stock.currentPrice)"
+        currentPrice.text = formatCurrentPriceFor(price: stock.currentPrice)
         currentPrice.font = UIFont.boldSystemFont(ofSize: 30)
 
         priceChange.text = formatPriceChangeFor(openPriceValue: stock.openPrice, currentPriceValue: stock.currentPrice)
@@ -85,9 +85,15 @@ class StockCell: UITableViewCell {
         ])
     }
 
+    private func formatCurrentPriceFor(price: Float) -> String {
+        print(price)
+        let formattedValue = StockDataFormatter.priceFormatter().string(from: price as NSNumber)
+        return formattedValue ?? "0.0"
+    }
+
     private func formatPriceChangeFor(openPriceValue: Float, currentPriceValue: Float) -> String {
         let priceChangePercent = (currentPriceValue - openPriceValue) / openPriceValue
-        let formattedValue = PriceChangeFormatter.sharedInstance().string(from: priceChangePercent as NSNumber)
+        let formattedValue = StockDataFormatter.priceChangeFormatter().string(from: priceChangePercent as NSNumber)
         return formattedValue ?? "00.00 %"
     }
 

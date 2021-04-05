@@ -33,7 +33,6 @@ class StockListViewController: UIViewController, StockListDisplayLogic, UISearch
     }
 
     var searchController = UISearchController()
-    var lastAnimatedStockCell = -1
 
     // MARK: Object lifecycle
 
@@ -208,19 +207,6 @@ extension StockListViewController: UITableViewDataSource, UITableViewDelegate {
 
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return StockCell.suggestedCellHeight
-    }
-
-    func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
-        if indexPath.row > lastAnimatedStockCell {
-            cell.transform = CGAffineTransform(translationX: self.view.bounds.width / 2, y: 0)
-            cell.alpha = 0
-            UIView.animate(withDuration: 1.3, delay: Double(indexPath.row) * 0.09, usingSpringWithDamping: 0.7, initialSpringVelocity: 11, options: .curveEaseInOut, animations: {
-                cell.transform = .identity
-                cell.alpha = 1
-
-            })
-            lastAnimatedStockCell = indexPath.row
-        }
     }
 
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {

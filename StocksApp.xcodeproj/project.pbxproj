@@ -226,7 +226,7 @@
 				B5F117492617BD19005B544E /* Extensions */,
 				B598795426066A20006E74BE /* Common */,
 				B59878D126026159006E74BE /* Scenes */,
-				B5F117092613AA85005B544E /* Workers */,
+				B5F117092613AA85005B544E /* Services */,
 				B5F11804261A6D6A005B544E /* CompanyProfileOfflineData.json */,
 				B5F1180B261A6E33005B544E /* QuoteOfflineData.json */,
 			);
@@ -294,13 +294,14 @@
 			path = "View Layer";
 			sourceTree = "<group>";
 		};
-		B5F117092613AA85005B544E /* Workers */ = {
+		B5F117092613AA85005B544E /* Services */ = {
 			isa = PBXGroup;
 			children = (
+				B5F118BB26208510005B544E /* AlertService */,
 				B5F1179B2618E4A0005B544E /* UserDefaultsManager */,
 				B5F117132613AAEC005B544E /* StocksAPI */,
 			);
-			path = Workers;
+			path = Services;
 			sourceTree = "<group>";
 		};
 		B5F117132613AAEC005B544E /* StocksAPI */ = {
@@ -363,6 +364,13 @@
 				B52DE07526125F0C00071CE3 /* DetailsCell.swift */,
 			);
 			path = Cells;
+			sourceTree = "<group>";
+		};
+		B5F118BB26208510005B544E /* AlertService */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = AlertService;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */

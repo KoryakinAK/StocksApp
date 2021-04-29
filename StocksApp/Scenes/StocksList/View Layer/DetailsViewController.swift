@@ -50,6 +50,7 @@ class DetailsViewController: UIViewController, DetailsDisplayLogic {
         label.textAlignment = .justified
         label.font = UIFont.boldSystemFont(ofSize: 35)
         label.numberOfLines = 0
+        label.textColor = .black
         label.backgroundColor = .clear
         return label
     }()

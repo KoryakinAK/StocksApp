@@ -19,17 +19,16 @@ class DetailsCell: UITableViewCell {
         let valueAsString = StockDataFormatter.priceFormatter().string(from: (value as NSNumber)) ?? "0.0"
         detailValueLabel.text = "$\(valueAsString)"
         detailValueLabel.font = UIFont.boldSystemFont(ofSize: 28)
-        detailValueLabel.textColor = .label
+        detailValueLabel.textColor = .black
         detailValueLabel.textAlignment = .right
 
         detailTitleLabel.text = column
         detailTitleLabel.font = UIFont.boldSystemFont(ofSize: 28)
-        detailTitleLabel.textColor = .label
+        detailTitleLabel.textColor = .black
 
         detailDescriptionLabel.text = description
         detailDescriptionLabel.font = UIFont.systemFont(ofSize: 23)
-        detailDescriptionLabel.textColor = .secondaryLabel
-
+        detailDescriptionLabel.textColor = UIColor(cgColor: CGColor(red: 0.235294, green: 0.235294, blue: 0.262745, alpha: 0.6))
     }
 
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {

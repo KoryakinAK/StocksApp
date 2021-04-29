@@ -22,8 +22,7 @@ class StockBasicInfoCell: UICollectionViewCell {
         label.translatesAutoresizingMaskIntoConstraints = false
         label.numberOfLines = 1
         label.font = UIFont.systemFont(ofSize: 25)
-        label.textColor = .secondaryLabel
-
+        label.textColor = UIColor(cgColor: CGColor(red: 0.235294, green: 0.235294, blue: 0.262745, alpha: 0.6))
         return label
     }()
 
@@ -32,7 +31,7 @@ class StockBasicInfoCell: UICollectionViewCell {
         label.translatesAutoresizingMaskIntoConstraints = false
         label.numberOfLines = 1
         label.font = UIFont.boldSystemFont(ofSize: 30)
-        label.textColor = .label
+        label.textColor = .black
         return label
     }()
 

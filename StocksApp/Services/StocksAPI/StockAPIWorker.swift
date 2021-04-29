@@ -13,7 +13,7 @@ class StockAPIWorker {
         components.scheme = "https"
         components.host = endpoint.baseURL
         components.path = endpoint.path
-        components.queryItems = [endpoint.parameters, endpoint.token]
+        components.queryItems = endpoint.parameters
         return components
     }
 

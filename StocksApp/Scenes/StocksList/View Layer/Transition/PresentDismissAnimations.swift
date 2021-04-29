@@ -8,7 +8,7 @@
 import UIKit
 
 class PresentAnimation: NSObject {
-    let duration: TimeInterval = 0.41
+    let duration: TimeInterval = 0.5
 
     private func animator(using transitionContext: UIViewControllerContextTransitioning) -> UIViewImplicitlyAnimating {
         let to = transitionContext.view(forKey: .to)!
@@ -42,7 +42,7 @@ extension PresentAnimation: UIViewControllerAnimatedTransitioning {
 }
 
 class DismissAnimation: NSObject {
-    let duration: TimeInterval = 0.3
+    let duration: TimeInterval = 0.4
 
     private func animator(using transitionContext: UIViewControllerContextTransitioning) -> UIViewImplicitlyAnimating {
         let from = transitionContext.view(forKey: .from)!

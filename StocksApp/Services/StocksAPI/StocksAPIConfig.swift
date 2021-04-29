@@ -10,13 +10,14 @@ import Foundation
 protocol Endpoint {
     var baseURL: String { get }
     var path: String { get }
-    var parameters: URLQueryItem { get }
+    var parameters: [URLQueryItem] { get }
     var token: URLQueryItem { get }
 }
 
 enum StocksAPI: Endpoint {
     case getQuote(ticker: String)
     case getCompanyProfile(ticker: String)
+    case getBasicFinancials(ticker: String)
 
     var baseURL: String {
         switch self {
@@ -31,13 +32,18 @@ enum StocksAPI: Endpoint {
             return "/api/v1/quote"
         case .getCompanyProfile:
             return "/api/v1/stock/profile2"
+        case .getBasicFinancials:
+            return "/api/v1/stock/metric"
         }
     }
 
-    var parameters: URLQueryItem {
+    var parameters: [URLQueryItem] {
         switch self {
         case .getQuote(let ticker), .getCompanyProfile(let ticker):
-            return URLQueryItem(name: "symbol", value: ticker)
+            return [URLQueryItem(name: "symbol", value: ticker), token]
+        case .getBasicFinancials(let ticker):
+            let metricQuery = URLQueryItem(name: "metric", value: "all")
+            return [URLQueryItem(name: "symbol", value: ticker), metricQuery, token]
         }
     }
 

@@ -33,6 +33,10 @@
 		B59879632606885E006E74BE /* StockModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B59879612606885E006E74BE /* StockModel.swift */; };
 		B59879722610DFF6006E74BE /* DetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B59879712610DFF6006E74BE /* DetailsViewController.swift */; };
 		B59879732610DFF6006E74BE /* DetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B59879712610DFF6006E74BE /* DetailsViewController.swift */; };
+		B59DDA592635DDB0001CEA7E /* StockBasicInfoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B59DDA582635DDB0001CEA7E /* StockBasicInfoCell.swift */; };
+		B59DDA5A2635DDB0001CEA7E /* StockBasicInfoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B59DDA582635DDB0001CEA7E /* StockBasicInfoCell.swift */; };
+		B59DDA5B2635DDB0001CEA7E /* StockBasicInfoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B59DDA582635DDB0001CEA7E /* StockBasicInfoCell.swift */; };
+		B59DDA612639D093001CEA7E /* BasicFinancialsOfflineData.json in Resources */ = {isa = PBXBuildFile; fileRef = B59DDA602639D093001CEA7E /* BasicFinancialsOfflineData.json */; };
 		B5F1170B2613AAD9005B544E /* StockAPIWorker.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5F1170A2613AAD9005B544E /* StockAPIWorker.swift */; };
 		B5F1170C2613AAD9005B544E /* StockAPIWorker.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5F1170A2613AAD9005B544E /* StockAPIWorker.swift */; };
 		B5F117212613AB92005B544E /* StockResponseModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5F117202613AB92005B544E /* StockResponseModels.swift */; };
@@ -141,6 +145,8 @@
 		B598795B2606867C006E74BE /* StockCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StockCell.swift; sourceTree = "<group>"; };
 		B59879612606885E006E74BE /* StockModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StockModel.swift; sourceTree = "<group>"; };
 		B59879712610DFF6006E74BE /* DetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailsViewController.swift; sourceTree = "<group>"; };
+		B59DDA582635DDB0001CEA7E /* StockBasicInfoCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StockBasicInfoCell.swift; sourceTree = "<group>"; };
+		B59DDA602639D093001CEA7E /* BasicFinancialsOfflineData.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = BasicFinancialsOfflineData.json; sourceTree = "<group>"; };
 		B5F1170A2613AAD9005B544E /* StockAPIWorker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StockAPIWorker.swift; sourceTree = "<group>"; };
 		B5F117202613AB92005B544E /* StockResponseModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StockResponseModels.swift; sourceTree = "<group>"; };
 		B5F1174A2617BD39005B544E /* UIPriceChangeLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIPriceChangeLabel.swift; sourceTree = "<group>"; };
@@ -229,6 +235,7 @@
 				B5F117092613AA85005B544E /* Services */,
 				B5F11804261A6D6A005B544E /* CompanyProfileOfflineData.json */,
 				B5F1180B261A6E33005B544E /* QuoteOfflineData.json */,
+				B59DDA602639D093001CEA7E /* BasicFinancialsOfflineData.json */,
 			);
 			path = StocksApp;
 			sourceTree = "<group>";
@@ -362,6 +369,7 @@
 			children = (
 				B598795B2606867C006E74BE /* StockCell.swift */,
 				B52DE07526125F0C00071CE3 /* DetailsCell.swift */,
+				B59DDA582635DDB0001CEA7E /* StockBasicInfoCell.swift */,
 			);
 			path = Cells;
 			sourceTree = "<group>";
@@ -530,6 +538,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B59DDA612639D093001CEA7E /* BasicFinancialsOfflineData.json in Resources */,
 				B5F117DD261A6797005B544E /* LaunchScreen.storyboard in Resources */,
 				B5F11805261A6D6A005B544E /* CompanyProfileOfflineData.json in Resources */,
 				B5F117DE261A6797005B544E /* Assets.xcassets in Resources */,
@@ -587,6 +596,7 @@
 				B5F11897261B8271005B544E /* UITableView+reloadDataWithDefaultAnimation.swift in Sources */,
 				B5F11876261B54ED005B544E /* StockListBuilder.swift in Sources */,
 				B5F117692618B073005B544E /* CartTransition.swift in Sources */,
+				B59DDA592635DDB0001CEA7E /* StockBasicInfoCell.swift in Sources */,
 				B5F11825261A7341005B544E /* Bundle+decode.swift in Sources */,
 				B5F117B42619D8F2005B544E /* UIPanGestureRecognizer+projectedLocation.swift in Sources */,
 				B598788126025D57006E74BE /* SceneDelegate.swift in Sources */,
@@ -620,6 +630,7 @@
 				B5F1170C2613AAD9005B544E /* StockAPIWorker.swift in Sources */,
 				B5F117822618C464005B544E /* PresentationControllerWithAnimations.swift in Sources */,
 				B5F117882618C4B7005B544E /* PresentationController.swift in Sources */,
+				B59DDA5B2635DDB0001CEA7E /* StockBasicInfoCell.swift in Sources */,
 				B52DE07D2612658700071CE3 /* StocksAPIConfig.swift in Sources */,
 				B5F117552617BF23005B544E /* StockDataFormatter.swift in Sources */,
 				B5F1181C261A6F1C005B544E /* Bundle+decode.swift in Sources */,
@@ -662,6 +673,7 @@
 				B5F1189C261B8277005B544E /* UITableView+reloadDataWithDefaultAnimation.swift in Sources */,
 				B5F117C2261A6797005B544E /* AppDelegate.swift in Sources */,
 				B5F117C3261A6797005B544E /* CartTransition.swift in Sources */,
+				B59DDA5A2635DDB0001CEA7E /* StockBasicInfoCell.swift in Sources */,
 				B5F117C4261A6797005B544E /* UIPanGestureRecognizer+projectedLocation.swift in Sources */,
 				B5F117C5261A6797005B544E /* SceneDelegate.swift in Sources */,
 				B5F117C6261A6797005B544E /* StockListPresenter.swift in Sources */,

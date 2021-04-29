@@ -21,24 +21,21 @@ protocol StockListBusinessLogic {
 }
 
 protocol StockListDataStore {
-    // var name: String { get set }
     var dataSource: [Stock] { get set }
     var dataSourceFavourites: [Stock] { get }
     var filteredDataSource: [Stock] { get set }
-
 }
 
 class StockListInteractor: StockListBusinessLogic, StockListDataStore {
     var presenter: StockListPresentationLogic?
     var worker: StockListWorker?
-
     var dataSource = [Stock]()
+    var filteredDataSource = [Stock]()
     var dataSourceFavourites: [Stock] {
         return dataSource.filter { stock in
             self.getCurrentFavouriteStatusFor(ticker: stock.ticker)
         }
     }
-    var filteredDataSource = [Stock]()
 
     func sendToDetailsVC(stock: Stock) {
         presenter?.presentToDetailsVC(stock: stock)
@@ -61,8 +58,11 @@ class StockListInteractor: StockListBusinessLogic, StockListDataStore {
     func loadBundleStockData() {
         let companyProfilesArray = Bundle.main.decode([CompanyProfile].self, from: "CompanyProfileOfflineData.json")
         let quoteArray = Bundle.main.decode([Quote].self, from: "QuoteOfflineData.json")
+        let basicFinancialsArray = Bundle.main.decode([BasicFinancialsContainer].self, from: "BasicFinancialsOfflineData.json")
         for index in 0..<min(companyProfilesArray.count, quoteArray.count) {
-            let stock = Stock(quote: quoteArray[index], companyProfile: companyProfilesArray[index])
+            let stock = Stock(quote: quoteArray[index],
+                              companyProfile: companyProfilesArray[index],
+                              metrics: basicFinancialsArray[index].metric)
             self.presenter?.presentLoadedStocksData(response: stock)
         }
     }
@@ -73,6 +73,8 @@ class StockListInteractor: StockListBusinessLogic, StockListDataStore {
         DispatchQueue.global(qos: .userInitiated).async {
             var companyResult: CompanyProfile!
             var quoteResult: Quote!
+            var basicFinancialsResult: BasicFinancialsContainer!
+
             let APICallsDispatchGroup = DispatchGroup()
             APICallsDispatchGroup.enter()
             StockAPIWorker.requestQuote(endpoint: StocksAPI.getCompanyProfile(ticker: ticker)) { (result: Result<CompanyProfile, Error>)  in
@@ -96,12 +98,25 @@ class StockListInteractor: StockListBusinessLogic, StockListDataStore {
                     APICallsDispatchGroup.leave()
                 }
             }
+
+            APICallsDispatchGroup.enter()
+            StockAPIWorker.requestQuote(endpoint: StocksAPI.getBasicFinancials(ticker: ticker)) { (result: Result<BasicFinancialsContainer, Error>)  in
+                switch result {
+                case .success(let response):
+                    basicFinancialsResult = response
+                    APICallsDispatchGroup.leave()
+                case .failure(let error):
+                    didFailToLoad = true
+                    APICallsDispatchGroup.leave()
+                }
+            }
+
             APICallsDispatchGroup.wait()
             DispatchQueue.main.async {
                 if didFailToLoad {
                     self.presenter?.presentLoadingFailAlert()
                 } else {
-                    self.presenter?.presentLoadedStocksData(response: Stock(quote: quoteResult, companyProfile: companyResult))
+                    self.presenter?.presentLoadedStocksData(response: Stock(quote: quoteResult, companyProfile: companyResult, metrics: basicFinancialsResult.metric))
                 }
             }
         }

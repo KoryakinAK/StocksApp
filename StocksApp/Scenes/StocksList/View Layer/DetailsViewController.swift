@@ -7,13 +7,43 @@
 
 import UIKit
 
-protocol DetailsDisplayLogic: class {
+protocol DetailsDisplayLogic: AnyObject {
     var selectedStock: Stock { get set }
     func displaySelected(stock: Stock)
 }
 
 class DetailsViewController: UIViewController, DetailsDisplayLogic {
-    let stockInfoTableView = UITableView(frame: .zero, style: .grouped)
+    static let sideInsectValue: CGFloat = 8
+
+    let stockBasicInfoCV: UICollectionView = {
+        let layout = UICollectionViewFlowLayout()
+        layout.scrollDirection = .horizontal
+        layout.minimumLineSpacing = sideInsectValue
+        layout.minimumInteritemSpacing = 0
+        layout.sectionInset = UIEdgeInsets(top: 0, left: sideInsectValue, bottom: 0, right: sideInsectValue)
+
+        let collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
+        collectionView.translatesAutoresizingMaskIntoConstraints = false
+        collectionView.backgroundColor = .clear
+        collectionView.isScrollEnabled = false
+        collectionView.showsHorizontalScrollIndicator = false
+        collectionView.showsVerticalScrollIndicator = false
+        return collectionView
+    }()
+
+    let stockInfoTableView: UITableView = {
+        let tableView = UITableView(frame: .zero, style: .grouped)
+        tableView.translatesAutoresizingMaskIntoConstraints = false
+        tableView.separatorStyle = .none
+        tableView.contentInset = UIEdgeInsets(top: -20, left: 0, bottom: 0, right: 0)
+        tableView.showsVerticalScrollIndicator = false
+        tableView.register(DetailsCell.self, forCellReuseIdentifier: DetailsCell.reuseIdentifier)
+        tableView.backgroundColor = .clear
+        tableView.separatorColor = .black
+        tableView.isScrollEnabled = false
+        return tableView
+    }()
+
     let stockNameLabel: UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
@@ -23,57 +53,36 @@ class DetailsViewController: UIViewController, DetailsDisplayLogic {
         label.backgroundColor = .clear
         return label
     }()
-    let stockNameBackground = UIImageView()
-    var selectedStock = Stock(ticker: "", name: "", currentPrice: 0.00, openPrice: 0.00, country: "", marketCapitalization: 0.00, finnhubIndustry: "") {
+
+    // TODO: Вынести данные из VC
+    var selectedStock = Stock() {
         willSet {
-            values[0] = newValue.ticker
-            values[1] = newValue.country
-            values[2] = String(newValue.marketCapitalization)
-            values[3] = newValue.finnhubIndustry
+            values[0] = newValue.peBasicExclExtraTTM ?? 0.0
+            values[1] = newValue.epsBasicExclExtraItemsAnnual
+            values[2] = Double(newValue.marketCapitalization)
+            values[3] = newValue.the52WeekHigh
+            values[4] = newValue.the52WeekLow
             stockNameLabel.text = newValue.name
             self.stockInfoTableView.reloadData()
         }
     }
 
-    let titles = ["Тикер", "Страна", "Капитализация", "Индустрия"]
-    var values = [String].init(repeating: "-", count: 5)
+    let titles = ["P/E", "EPS", "Капитализация", "52 high", "52 low"]
+    let descriptions = ["Цена акции / прибыль", "Прибыль на акцию", "Стоимость компании", "Наивысшая цена за год", "Наименьшая цена за год"]
+    var values = [Double].init(repeating: 0, count: 5)
     var lastAnimatedStockCell = -1
-
-    /* enum stockTableViewConfiguration: Int {
-     case Name = 0
-     case Ticker = 1
-     case Price = 2
-     case PriceChange = 3
-     case Volume = 4
-     case Chart = 5
-     }*/
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.self.backgroundColor = .systemBackground
         setupView()
+        setupGradientBackground()
+        setupStockBasicInfoCV()
         setStockInfoTableView()
     }
 
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         lastAnimatedStockCell = -1
-    }
-
-    func setStockInfoTableView() {
-        stockInfoTableView.delegate = self
-        stockInfoTableView.dataSource = self
-        stockInfoTableView.translatesAutoresizingMaskIntoConstraints = false
-        view.addSubview(stockInfoTableView)
-        stockInfoTableView.topAnchor.constraint(equalTo: self.stockNameLabel.bottomAnchor).isActive = true
-        stockInfoTableView.bottomAnchor.constraint(equalTo: self.view.bottomAnchor).isActive = true
-        stockInfoTableView.leadingAnchor.constraint(equalTo: self.view.leadingAnchor).isActive = true
-        stockInfoTableView.trailingAnchor.constraint(equalTo: self.view.trailingAnchor).isActive = true
-        stockInfoTableView.showsVerticalScrollIndicator = false
-        stockInfoTableView.register(DetailsCell.self, forCellReuseIdentifier: DetailsCell.reuseIdentifier)
-        stockInfoTableView.backgroundColor = .clear
-        stockInfoTableView.separatorColor = .clear
-        stockInfoTableView.isScrollEnabled = false
     }
 
     func setupView() {
@@ -85,11 +94,69 @@ class DetailsViewController: UIViewController, DetailsDisplayLogic {
         ])
     }
 
+    func setupGradientBackground() {
+        let gradient = CAGradientLayer()
+        gradient.frame = view.bounds
+        let endColor = UIColor(red: 0.00, green: 0.35, blue: 0.65, alpha: 1.0).cgColor
+        let startColor = UIColor(red: 1.00, green: 0.99, blue: 0.89, alpha: 1.00).cgColor
+        gradient.colors = [startColor, endColor]
+        gradient.startPoint = CGPoint(x: 0, y: 0)
+        gradient.endPoint =  CGPoint(x: 2, y: 2)
+        view.layer.insertSublayer(gradient, at: 0)
+    }
+
+    func setupStockBasicInfoCV() {
+        view.addSubview(stockBasicInfoCV)
+        stockBasicInfoCV.register(StockBasicInfoCell.self, forCellWithReuseIdentifier: "StockBasicInfoCell")
+        stockBasicInfoCV.delegate = self
+        stockBasicInfoCV.dataSource = self
+        stockBasicInfoCV.topAnchor.constraint(equalTo: self.stockNameLabel.bottomAnchor, constant: 10).isActive = true
+        stockBasicInfoCV.heightAnchor.constraint(equalToConstant: 80).isActive = true
+        stockBasicInfoCV.leadingAnchor.constraint(equalTo: self.view.leadingAnchor).isActive = true
+        stockBasicInfoCV.trailingAnchor.constraint(equalTo: self.view.trailingAnchor).isActive = true
+    }
+
+    func setStockInfoTableView() {
+        stockInfoTableView.delegate = self
+        stockInfoTableView.dataSource = self
+        view.addSubview(stockInfoTableView)
+        stockInfoTableView.topAnchor.constraint(equalTo: self.stockBasicInfoCV.bottomAnchor).isActive = true
+        stockInfoTableView.bottomAnchor.constraint(equalTo: self.view.bottomAnchor).isActive = true
+        stockInfoTableView.leadingAnchor.constraint(equalTo: self.view.leadingAnchor).isActive = true
+        stockInfoTableView.trailingAnchor.constraint(equalTo: self.view.trailingAnchor).isActive = true
+    }
+
     func displaySelected(stock: Stock) {
         self.selectedStock = stock
     }
 }
 
+// MARK: - CollectionView Lifecycle
+extension DetailsViewController: UICollectionViewDelegate, UICollectionViewDelegateFlowLayout, UICollectionViewDataSource {
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return 2
+    }
+
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        guard let cell = stockBasicInfoCV.dequeueReusableCell(withReuseIdentifier: "StockBasicInfoCell", for: indexPath) as? StockBasicInfoCell else { fatalError() }
+        switch indexPath.row {
+        case 0:
+            cell.configure(with: selectedStock, for: .country)
+        case 1:
+            cell.configure(with: selectedStock, for: .industry)
+        default:
+            cell.configure(with: selectedStock, for: .other)
+        }
+        return cell
+    }
+
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        let width = (self.view.bounds.width - (DetailsViewController.sideInsectValue * 4)) / 2
+        return CGSize(width: width, height: 80)
+    }
+}
+
+// MARK: - TableView Lifecycle
 extension DetailsViewController: UITableViewDataSource, UITableViewDelegate {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return titles.count
@@ -103,7 +170,10 @@ extension DetailsViewController: UITableViewDataSource, UITableViewDelegate {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: DetailsCell.reuseIdentifier, for: indexPath) as? DetailsCell else {
             fatalError()
         }
-        cell.configure(with: values[indexPath.row], for: titles[indexPath.row])
+        cell.configure(values[indexPath.row], for: titles[indexPath.row], with: descriptions[indexPath.row])
+        cell.preservesSuperviewLayoutMargins = false
+        cell.separatorInset = UIEdgeInsets.zero
+        cell.layoutMargins = UIEdgeInsets.zero
         return cell
     }
 

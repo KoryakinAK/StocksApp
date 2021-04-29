@@ -12,7 +12,7 @@
 
 import UIKit
 
-protocol StockListDisplayLogic: class {
+protocol StockListDisplayLogic: AnyObject {
     func displayLoaded(stock: Stock)
     func displayLoadingError()
 }

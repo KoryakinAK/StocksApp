@@ -122,7 +122,6 @@ class StockListViewController: UIViewController, StockListDisplayLogic, UISearch
         stockListTableView.dataSource = self
         stockListTableView.translatesAutoresizingMaskIntoConstraints = false
         view.addSubview(stockListTableView)
-        // TODO: Сделать расширение для UIView с функцией pin to superview
         stockListTableView.topAnchor.constraint(equalTo: self.view.topAnchor).isActive = true
         stockListTableView.bottomAnchor.constraint(equalTo: self.view.bottomAnchor).isActive = true
         stockListTableView.leadingAnchor.constraint(equalTo: self.view.leadingAnchor).isActive = true
@@ -236,41 +235,59 @@ extension StockListViewController: UITableViewDataSource, UITableViewDelegate {
 
     // MARK: - Swipe Actions in TableViewCell
     func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
+        enum DataSourceStatus {
+            case filteredDS    // Поиск активен
+            case generalDS     // Показываются все акции, не только избранные
+            case favouritesDS  // Отображаются только избранные акции
+        }
 
-        let action = UIContextualAction(style: .normal, title: "Fav") { (action, view, completionHanlder) in
-            var stock: Stock!
-            // TODO: - Функция-хелпер, сокращяющая дублирование кода
-            // TODO: - Перестать каждый раз перезагружать все данные из-за одной ячейки
-            // TODO: - Анимация удаления ячейки вместо анимации перезагрузки данных
-            guard !self.searchController.isActive else {
-                stock = self.interactor.filteredDataSource[indexPath.row]
-                let currentFavStatus = self.interactor?.getCurrentFavouriteStatusFor(ticker: stock.ticker) ?? false
-                self.interactor?.setFavouriteStatusFor(ticker: stock.ticker, to: !currentFavStatus)
-                self.stockListTableView.reloadDataWithDefaultAnimation()
-                completionHanlder(true)
-                return
-            }
+        var currentStatus: DataSourceStatus {
+            guard !self.searchController.isActive else { return .filteredDS }
+            guard self.isShowingOnlyFavourites else { return .generalDS }
+            return .favouritesDS
+        }
 
-            guard self.isShowingOnlyFavourites else {
-                stock = self.interactor.dataSource[indexPath.row]
-                let currentFavStatus = self.interactor?.getCurrentFavouriteStatusFor(ticker: stock.ticker) ?? false
-                self.interactor?.setFavouriteStatusFor(ticker: stock.ticker, to: !currentFavStatus)
-                completionHanlder(true)
-                return
+        var currentStock: Stock {
+            // Выглядит не очень безопасно.
+            switch currentStatus {
+            case .filteredDS:
+                return self.interactor.filteredDataSource[indexPath.row]
+            case .generalDS:
+                return self.interactor.dataSource[indexPath.row]
+            case .favouritesDS:
+                return  self.interactor.dataSourceFavourites[indexPath.row]
             }
-            stock = self.interactor.dataSourceFavourites[indexPath.row]
-            let currentFavStatus = self.interactor?.getCurrentFavouriteStatusFor(ticker: stock.ticker) ?? false
-            self.interactor?.setFavouriteStatusFor(ticker: stock.ticker, to: !currentFavStatus)
+        }
+
+        var isCurrentlyFavedStatus: Bool {
+            return self.interactor?.getCurrentFavouriteStatusFor(ticker: currentStock.ticker) ?? false
+        }
+
+        let action = UIContextualAction(style: .normal, title: "") { (action, view, completionHanlder) in
+            self.interactor?.setFavouriteStatusFor(ticker: currentStock.ticker, to: !isCurrentlyFavedStatus)
             self.stockListTableView.reloadDataWithDefaultAnimation()
             completionHanlder(true)
         }
 
         let favIconConfiguration = UIImage.SymbolConfiguration(pointSize: 22, weight: .bold)
 
-        action.image = UIImage(systemName: "star", withConfiguration: favIconConfiguration)?
-            .withRenderingMode(.alwaysOriginal)
-            .withTintColor(.white)
-        action.backgroundColor = .systemIndigo
+        switch isCurrentlyFavedStatus {
+        case true:
+            // Удалить из избранного
+            action.title = "Удал. из избр."
+            action.image = UIImage(systemName: "star.fill", withConfiguration: favIconConfiguration)?
+                .withRenderingMode(.alwaysOriginal)
+                .withTintColor(.white)
+            action.backgroundColor = .systemRed
+        case false:
+            // Добавить в избранное
+            action.title = "Доб. в избр."
+            action.image = UIImage(systemName: "star", withConfiguration: favIconConfiguration)?
+                .withRenderingMode(.alwaysOriginal)
+                .withTintColor(.white)
+            action.backgroundColor = .systemIndigo
+        }
+
         let configuration = UISwipeActionsConfiguration(actions: [action])
         return configuration
     }

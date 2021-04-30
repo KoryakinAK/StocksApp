@@ -49,7 +49,9 @@ class DetailsViewController: UIViewController, DetailsDisplayLogic {
         label.translatesAutoresizingMaskIntoConstraints = false
         label.textAlignment = .justified
         label.font = UIFont.boldSystemFont(ofSize: 35)
-        label.numberOfLines = 0
+        label.minimumScaleFactor = 0.7
+        label.adjustsFontSizeToFitWidth = true
+        label.numberOfLines = 1
         label.textColor = .black
         label.backgroundColor = .clear
         return label
@@ -91,7 +93,7 @@ class DetailsViewController: UIViewController, DetailsDisplayLogic {
         NSLayoutConstraint.activate([
             stockNameLabel.topAnchor.constraint(equalTo: self.view.topAnchor, constant: 20),
             stockNameLabel.leadingAnchor.constraint(equalTo: self.view.leadingAnchor, constant: 7),
-            stockNameLabel.trailingAnchor.constraint(equalTo: self.view.trailingAnchor, constant: 7)
+            stockNameLabel.trailingAnchor.constraint(equalTo: self.view.trailingAnchor, constant: -7)
         ])
     }
 
@@ -118,9 +120,9 @@ class DetailsViewController: UIViewController, DetailsDisplayLogic {
     }
 
     func setStockInfoTableView() {
+        view.addSubview(stockInfoTableView)
         stockInfoTableView.delegate = self
         stockInfoTableView.dataSource = self
-        view.addSubview(stockInfoTableView)
         stockInfoTableView.topAnchor.constraint(equalTo: self.stockBasicInfoCV.bottomAnchor).isActive = true
         stockInfoTableView.bottomAnchor.constraint(equalTo: self.view.bottomAnchor).isActive = true
         stockInfoTableView.leadingAnchor.constraint(equalTo: self.view.leadingAnchor).isActive = true

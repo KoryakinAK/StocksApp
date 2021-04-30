@@ -11,35 +11,35 @@ class DetailsCell: UITableViewCell {
     static var reuseIdentifier: String = "DetailsCell"
     static var suggestedCellHeight: CGFloat = 70
 
-    let detailTitleLabel = UILabel()
-    let detailDescriptionLabel = UILabel()
-    let detailValueLabel = UILabel()
+    let titleLabel = UILabel()
+    let descriptionLabel = UILabel()
+    let valueLabel = UILabel()
 
     func configure(_ value: Double, for column: String, with description: String) {
         let valueAsString = StockDataFormatter.priceFormatter().string(from: (value as NSNumber)) ?? "0.0"
-        detailValueLabel.text = "$\(valueAsString)"
-        detailValueLabel.font = UIFont.boldSystemFont(ofSize: 28)
-        detailValueLabel.textColor = .black
-        detailValueLabel.textAlignment = .right
+        valueLabel.text = "$\(valueAsString)"
+        valueLabel.font = UIFont.boldSystemFont(ofSize: 28)
+        valueLabel.textColor = .black
+        valueLabel.textAlignment = .right
 
-        detailTitleLabel.text = column
-        detailTitleLabel.font = UIFont.boldSystemFont(ofSize: 28)
-        detailTitleLabel.textColor = .black
+        titleLabel.text = column
+        titleLabel.font = UIFont.boldSystemFont(ofSize: 28)
+        titleLabel.textColor = .black
 
-        detailDescriptionLabel.text = description
-        detailDescriptionLabel.font = UIFont.systemFont(ofSize: 23)
-        detailDescriptionLabel.textColor = UIColor(cgColor: CGColor(red: 0.235294, green: 0.235294, blue: 0.262745, alpha: 0.6))
+        descriptionLabel.text = description
+        descriptionLabel.font = UIFont.systemFont(ofSize: 23)
+        descriptionLabel.textColor = UIColor(cgColor: CGColor(red: 0.235294, green: 0.235294, blue: 0.262745, alpha: 0.6))
     }
 
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         self.backgroundColor = .clear
-        self.detailValueLabel.adjustsFontSizeToFitWidth = true
-        self.detailTitleLabel.adjustsFontSizeToFitWidth = true
-        self.detailValueLabel.minimumScaleFactor = 0.7
-        self.detailTitleLabel.minimumScaleFactor = 0.7
+        self.valueLabel.adjustsFontSizeToFitWidth = true
+        self.titleLabel.adjustsFontSizeToFitWidth = true
+        self.valueLabel.minimumScaleFactor = 0.7
+        self.titleLabel.minimumScaleFactor = 0.7
 
-        let allCellObjectsList: [UIView] = [detailTitleLabel, detailDescriptionLabel, detailValueLabel]
+        let allCellObjectsList: [UIView] = [titleLabel, descriptionLabel, valueLabel]
         allCellObjectsList.forEach {
             $0.translatesAutoresizingMaskIntoConstraints = false
             self.contentView.addSubview($0)
@@ -48,17 +48,17 @@ class DetailsCell: UITableViewCell {
 
         // MARK: - Cell content autolayout
         NSLayoutConstraint.activate([
-            detailTitleLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 6),
-            detailTitleLabel.bottomAnchor.constraint(equalTo: contentView.centerYAnchor),
-            detailTitleLabel.widthAnchor.constraint(equalTo: contentView.widthAnchor, multiplier: 0.70),
+            titleLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 6),
+            titleLabel.bottomAnchor.constraint(equalTo: contentView.centerYAnchor),
+            titleLabel.widthAnchor.constraint(equalTo: contentView.widthAnchor, multiplier: 0.70),
 
-            detailDescriptionLabel.topAnchor.constraint(equalTo: contentView.centerYAnchor),
-            detailDescriptionLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 6),
-            detailDescriptionLabel.widthAnchor.constraint(equalTo: contentView.widthAnchor, multiplier: 0.70),
+            descriptionLabel.topAnchor.constraint(equalTo: contentView.centerYAnchor),
+            descriptionLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 6),
+            descriptionLabel.widthAnchor.constraint(equalTo: contentView.widthAnchor, multiplier: 0.70),
 
-            detailValueLabel.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -6),
-            detailValueLabel.centerYAnchor.constraint(equalTo: contentView.centerYAnchor),
-            detailValueLabel.widthAnchor.constraint(equalTo: contentView.widthAnchor, multiplier: 0.3, constant: -6)
+            valueLabel.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -6),
+            valueLabel.centerYAnchor.constraint(equalTo: contentView.centerYAnchor),
+            valueLabel.widthAnchor.constraint(equalTo: contentView.widthAnchor, multiplier: 0.3, constant: -6)
         ])
     }
 

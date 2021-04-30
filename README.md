@@ -14,6 +14,7 @@
 
 В ближайшее время:
 * Тесты
+* Больше функциональной нагрузки
 * Улучшить верстку, в первую очередь корректно сокращать слишком длинные цифры
 
 |  Ошибка сети  | Доб/Удал в избранное | Поддержка светлой/темной темы | Инфо об акции |
@@ -21,5 +22,4 @@
 | ![Ошибка сети](https://user-images.githubusercontent.com/47415906/113607719-36742c80-9652-11eb-8fb4-36f0602d88e8.PNG) | ![Свайп-экшн](https://user-images.githubusercontent.com/47415906/113609792-f19dc500-9654-11eb-98c5-3b6897926be4.PNG)| ![Светлая тема](https://user-images.githubusercontent.com/47415906/113607733-3b38e080-9652-11eb-88a1-722a5eadcdab.PNG) | ![Детали акции](https://user-images.githubusercontent.com/47415906/116761608-c96d7000-aa20-11eb-8f14-95567334cdb6.PNG)
 |
 
-https://user-images.githubusercontent.com/47415906/116761595-c07c9e80-aa20-11eb-9948-94860759cceb.MP4
-
+https://user-images.githubusercontent.com/47415906/116762818-4ea65400-aa24-11eb-86d3-bf16974348c8.mp4

@@ -79,7 +79,6 @@ class StockCell: UITableViewCell {
             name.topAnchor.constraint(equalTo: contentView.centerYAnchor),
             name.leadingAnchor.constraint(equalTo: logo.trailingAnchor, constant: 12),
             name.trailingAnchor.constraint(equalTo: priceChange.leadingAnchor, constant: -8),
-//            name.bottomAnchor.constraint(equalTo: contentView.bottomAnchor),
 
             ticker.leadingAnchor.constraint(equalTo: logo.trailingAnchor, constant: 12),
             ticker.bottomAnchor.constraint(equalTo: contentView.centerYAnchor),

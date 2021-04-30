@@ -108,7 +108,7 @@ class DetailsViewController: UIViewController, DetailsDisplayLogic {
 
     func setupStockBasicInfoCV() {
         view.addSubview(stockBasicInfoCV)
-        stockBasicInfoCV.register(StockBasicInfoCell.self, forCellWithReuseIdentifier: "StockBasicInfoCell")
+        stockBasicInfoCV.register(DetailsCVCell.self, forCellWithReuseIdentifier: DetailsCVCell.reuseIdentifier)
         stockBasicInfoCV.delegate = self
         stockBasicInfoCV.dataSource = self
         stockBasicInfoCV.topAnchor.constraint(equalTo: self.stockNameLabel.bottomAnchor, constant: 10).isActive = true
@@ -139,7 +139,7 @@ extension DetailsViewController: UICollectionViewDelegate, UICollectionViewDeleg
     }
 
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        guard let cell = stockBasicInfoCV.dequeueReusableCell(withReuseIdentifier: "StockBasicInfoCell", for: indexPath) as? StockBasicInfoCell else { fatalError() }
+        guard let cell = stockBasicInfoCV.dequeueReusableCell(withReuseIdentifier: DetailsCVCell.reuseIdentifier, for: indexPath) as? DetailsCVCell else { fatalError() }
         switch indexPath.row {
         case 0:
             cell.configure(with: selectedStock, for: .country)

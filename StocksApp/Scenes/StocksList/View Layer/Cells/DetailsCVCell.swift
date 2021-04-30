@@ -13,9 +13,9 @@ enum BasicInfoCellContentType: String {
     case other = "Другое"
 }
 
-class StockBasicInfoCell: UICollectionViewCell {
+class DetailsCVCell: UICollectionViewCell {
 
-    static var reuseIdentifier: String = "StockBasicInfoCell"
+    static var reuseIdentifier: String = "DetailsCVCell"
 
     let titleLabel: UILabel = {
         let label = UILabel()

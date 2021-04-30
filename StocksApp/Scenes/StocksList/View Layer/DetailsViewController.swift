@@ -67,6 +67,7 @@ class DetailsViewController: UIViewController, DetailsDisplayLogic {
             values[4] = newValue.the52WeekLow
             stockNameLabel.text = newValue.name
             self.stockInfoTableView.reloadData()
+            self.stockBasicInfoCV.reloadData()
         }
     }
 
